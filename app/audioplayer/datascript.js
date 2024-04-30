@@ -69,7 +69,6 @@ if (crtaudlnk && useru != null) {
   });
 }
 
-//
 function changeBoxShadow() {
   const bubbles = document.querySelectorAll(".bubble");
 
