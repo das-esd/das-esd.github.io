@@ -33,7 +33,8 @@
       position: fixed;
       right: 0;
       top: 0;
-      z-index: 1000;
+      z-index: 10;
+      opacity: 0.3;
     }
 
     /* KEYFRAMES */
@@ -264,10 +265,10 @@
       -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2),
         inset 0px 10px 30px 5px rgba(255, 255, 255, 1);
       -moz-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2),
-        inset 0px 10px 30px 5px rgb(251, 145, 145, 1);
-      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2),
-        inset 0px 10px 30px 5px rgba(198, 248, 141, 0.717);
-
+        inset 0px 10px 30px 5px rgba(255, 255, 255, 1);
+      box-shadow: 0 30px 50px rgba(249, 65, 65, 1),
+        inset 0px 10px 30px 5px rgb(0, 12, 239, 1);
+      opacity: 0.8;
       height: 200px;
       position: absolute;
       width: 200px;
@@ -333,6 +334,8 @@
       right: 0px;
       position: fixed;
       width: 100%;
+      z-index: 999999 !important;
+      box-shadow: 0px 0px 1px 1px #ffffff52;
     }
     .plyrtt {
       font-family: "Courier New", Courier, monospace;
@@ -374,6 +377,7 @@
       border-top-left-radius: 10px;
       max-width: 320px;
       display: none;
+      z-index: 100;
     }
     .crtlnkdv input {
       outline: none;
@@ -405,17 +409,39 @@
       background-color: #ffffff99;
     }
     #infocon {
-      background-color: #eeeeeebd;
+      background-color: #ffffff56;
       max-width: 500px;
       padding: 20px;
       border-radius: 20px;
       min-height: 440px;
       overflow: hidden;
-      background-image: url("/audios/files/image/thumb-1.jpg");
       background-repeat: no-repeat;
       background-blend-mode: hue;
       background-position-x: left;
       color: black;
+      background: linear-gradient(
+        90deg,
+        #e6e6e6d4,
+        #ffaa0dd4,
+        #ad01add4,
+        #02c002d4,
+        #404040d4
+      );
+      background-size: 400% 400%;
+      animation: gradient_b 60s ease infinite;
+    }
+    @keyframes gradient_b {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
   </style>
   <body>
@@ -433,7 +459,7 @@
       </center>
     </section>
     <div class="audioplayer">
-      <audio data-role="audio-player" class="light" id="audioplayer"></audio>
+      <audio data-role="audio-player" class="dark" id="audioplayer"></audio>
     </div>
     <section>
       <div class="plyrtt">
