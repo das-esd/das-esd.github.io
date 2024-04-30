@@ -590,3 +590,32 @@ h3 a:hover {
   color: #ffffff;
   width: 90%;
 }
+#recordap {
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 90000 !important;
+  display: none;
+}
+#recordap iframe {
+  width: 100%;
+  height: 100vh;
+  border: none;
+}
+#clsrecrdap {
+  top: 10px;
+  right: 10px;
+  padding: 3px 10px;
+  padding-top: 2px;
+  position: fixed;
+  background-color: #7878786d;
+  color: black;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+#clsrecrdap:hover {
+  opacity: 0.7;
+}
