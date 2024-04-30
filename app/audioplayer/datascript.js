@@ -68,3 +68,22 @@ if (crtaudlnk && useru != null) {
     document.getElementById("crtlnkdv").style.display = "block";
   });
 }
+
+//
+function changeBoxShadow() {
+  const bubbles = document.querySelectorAll(".bubble");
+
+  let hue = 0;
+
+  setInterval(() => {
+    hue = (hue + 10) % 360;
+
+    bubbles.forEach((bubble) => {
+      const color1 = `rgba(249, 65, 65, 0.2)`;
+      const color2 = `rgb(${hue}, 12, 239)`;
+      bubble.style.boxShadow = `0 30px 50px ${color1}, inset 0px 10px 30px 5px ${color2}`;
+    });
+  }, 1000);
+}
+
+changeBoxShadow();
