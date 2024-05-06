@@ -360,11 +360,11 @@
       color: #d9d9d9;
     }
     .sticon svg {
-      top: 50px;
+      top: 5px;
       right: 0px;
       position: fixed;
-      width: 45px;
-      background-color: #ffffff44;
+      width: 40px;
+      /* background-color: #ffffff44; */
       padding-bottom: 6px;
       border-bottom-left-radius: 10px;
     }
@@ -390,7 +390,7 @@
       font-size: 14px;
     }
     #trckdesc {
-      top: 15vh;
+      top: 16vh;
       left: 0px;
       position: fixed;
       width: 100%;
@@ -399,8 +399,9 @@
       color: #d5d5d5;
       font-family: Georgia, "Times New Roman", Times, serif;
       z-index: 100 !important;
+      display: none;
     }
-    #trckdesc img {
+    #trth {
       margin-top: 35px;
       margin-bottom: 5px;
       width: 200px;
@@ -418,17 +419,33 @@
       background-repeat: no-repeat;
       background-blend-mode: hue;
       background-position-x: left;
-      color: black;
+      z-index: 1000;
+      color: #ffffff;
       background: linear-gradient(
-        90deg,
-        #e6e6e6d4,
-        #ffaa0dd4,
-        #ad01add4,
-        #02c002d4,
-        #404040d4
+        -45deg,
+        #e6e6e6b4,
+        #ad01adb0,
+        #0c0cc4a5,
+        #05a005ab,
+        #ffaa0da9,
+        #ff0000c1,
+        #404040be
       );
-      background-size: 400% 400%;
+      background-size: 500% 500%;
       animation: gradient_b 60s ease infinite;
+      border: 2px solid white;
+    }
+    #backfntrc {
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      left: 0px;
+      position: fixed;
+      z-index: 10;
+      background-color: #d9d9d985;
+      border: 0px;
+      opacity: 0.2;
+      object-fit: cover;
     }
     @keyframes gradient_b {
       0% {
@@ -441,6 +458,29 @@
 
       100% {
         background-position: 0% 50%;
+      }
+    }
+    @media screen and (max-width: 600px) {
+      #infocon {
+        margin-top: 20px;
+        max-width: 350px;
+        min-height: 400px;
+      }
+
+      .sticon svg {
+        top: 7.5px;
+        width: 35px;
+      }
+      #trth {
+        margin-top: 45px;
+        width: 180px;
+        height: 180px;
+      }
+      h2 {
+        font-size: 26px;
+      }
+      h3 {
+        font-size: 22px;
       }
     }
   </style>
@@ -457,6 +497,7 @@
           </h3>
         </div>
       </center>
+      <img id="backfntrc" />
     </section>
     <div class="audioplayer">
       <audio data-role="audio-player" class="dark" id="audioplayer"></audio>
@@ -467,7 +508,7 @@
           ><a target="_blank" href="https://soubhikdas.in"
             >Es D | www.soubhikdas.in</a
           ></span
-        ><span style="float: right">🎼</span>
+        ><span style="float: right"></span>
         <span class="sticon">
           <div class="crtlnkdv" id="crtlnkdv">
             <form id="audioForm">
