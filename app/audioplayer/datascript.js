@@ -8,14 +8,18 @@ const player = document.getElementById("audioplayer");
 const title = document.getElementById("trtt");
 const artist = document.getElementById("trat");
 const thumb = document.getElementById("trth");
+const bcthumb = document.getElementById("backfntrc");
 player.setAttribute("data-src", tracksrc);
 title.innerText = tracktitle;
 artist.innerText = trackartist;
 thumb.src = trackthumb;
+bcthumb.src = trackthumb;
 console.log(tracksrc, tracktitle, trackartist);
 if (!tracksrc) {
   document.body.style.backgroundImage = "url('player-thumb.png')";
   document.getElementById("trckdesc").style.display = "none";
+} else {
+  document.getElementById("trckdesc").style.display = "block";
 }
 document.addEventListener("contextmenu", function (event) {
   event.preventDefault();
