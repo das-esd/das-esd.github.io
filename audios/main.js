@@ -22,6 +22,12 @@ let curr_track = document.createElement("audio");
 // Define the tracks that have to be played
 let track_list = [
   {
+    name: "মহাবীর (Great Warrior)",
+    artist: "Es D (Soubhik Das)",
+    image: "/audios/files/image/record_thumb.png",
+    path: "/audios/files/audio/record/Mohabir.m4a",
+  },
+  {
     name: "বোধোদয় (Bodho-doi)",
     artist: "Es D (Soubhik Das)",
     image: "/audios/files/image/record_thumb.png",
