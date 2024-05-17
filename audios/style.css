@@ -27,7 +27,6 @@ html {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin-top: 25px;
 }
 
 .track-art {
@@ -330,26 +329,4 @@ i.fa-step-backward {
 a {
   color: #00000048;
   text-decoration: none;
-}
-
-/* Media queries for responsive widths */
-@media (max-width: 767px) {
-  #playlist {
-  }
-  #player {
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  #playlist {
-  }
-  #player {
-  }
-}
-
-@media (min-width: 1025px) {
-  #playlist {
-  }
-  #player {
-  }
 }
