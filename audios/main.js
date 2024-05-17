@@ -15,10 +15,10 @@ let total_duration = document.querySelector(".total-duration");
 let track_index = 0;
 let isPlaying = false;
 let updateTimer;
-
+let isRepeating = false;
 // Create new audio element
 let curr_track = document.createElement("audio");
-
+let repeat_btn = document.querySelector(".repeat-track");
 // Define the tracks that have to be played
 let track_list = [
   {
@@ -104,17 +104,16 @@ function loadTrack(track_index) {
     "PLAYING " + (track_index + 1) + " OF " + track_list.length;
 
   updateTimer = setInterval(seekUpdate, 1000);
-  curr_track.addEventListener("ended", nextTrack);
+  curr_track.removeEventListener("ended", nextOrRepeatTrack); // Ensure no duplicate listeners
+  curr_track.addEventListener("ended", nextOrRepeatTrack);
   random_bg_color();
 }
-
 function resetValues() {
   curr_time.textContent = "00:00";
   total_duration.textContent = "00:00";
   seek_slider.value = 0;
 }
 
-// Load the first track in the tracklist
 loadTrack(track_index);
 
 function playpauseTrack() {
@@ -148,6 +147,33 @@ function prevTrack() {
   playTrack();
 }
 
+function repeatTrack() {
+  isRepeating = !isRepeating;
+  repeat_btn.classList.toggle("active", isRepeating);
+}
+
+function nextOrRepeatTrack() {
+  if (isRepeating) {
+    loadTrack(track_index);
+    playTrack();
+  } else {
+    nextTrack();
+  }
+}
+
+function shuffleTrack() {
+  let newTrackIndex;
+  do {
+    newTrackIndex = Math.floor(Math.random() * track_list.length);
+  } while (newTrackIndex === track_index);
+
+  track_index = newTrackIndex;
+  loadTrack(track_index);
+  playTrack();
+}
+
+document.querySelector(".suffle-track").addEventListener("click", shuffleTrack);
+document.querySelector(".repeat-track").addEventListener("click", repeatTrack);
 function seekTo() {
   let seekto = curr_track.duration * (seek_slider.value / 100);
   curr_track.currentTime = seekto;
@@ -192,6 +218,41 @@ function seekUpdate() {
   }
 }
 
+function createPlaylist() {
+  const playlistDiv = document.getElementById("myplaylist");
+  track_list.forEach((track, index) => {
+    const trackElement = document.createElement("div");
+    trackElement.className = "playlist-item";
+    trackElement.onclick = () => {
+      loadTrack(index);
+      playTrack();
+    };
+    const trackImage = document.createElement("img");
+    trackImage.src = track.image;
+    trackImage.alt = track.name;
+
+    const trackDetails = document.createElement("div");
+
+    const trackName = document.createElement("div");
+    trackName.textContent = track.name;
+    trackName.className = "trackName";
+
+    const trackArtist = document.createElement("div");
+    trackArtist.textContent = track.artist;
+    trackArtist.className = "trackArtist";
+
+    trackDetails.appendChild(trackName);
+    trackDetails.appendChild(trackArtist);
+
+    trackElement.appendChild(trackImage);
+    trackElement.appendChild(trackDetails);
+
+    playlistDiv.appendChild(trackElement);
+  });
+}
+
+window.onload = createPlaylist;
+
 function sharethis() {
   const currentTrack = track_list[track_index];
   const shareURL = `https://soubhikdas.in/audios/?record_studio=${currentTrack.name.replace(
@@ -228,3 +289,32 @@ if (requestedTrackIndex !== -1) {
 document.addEventListener("contextmenu", function (event) {
   event.preventDefault();
 });
+
+const listicon = document.getElementById("listicon");
+const listdiv = document.getElementById("playlist");
+const player = document.getElementById("player");
+
+listicon.addEventListener("click", toggleplaylist);
+
+const screenWidth = window.innerWidth;
+
+function toggleplaylist() {
+  if (listdiv.style.display === "block") {
+    listdiv.style.width = "0%";
+    player.style.width = "100%";
+    listicon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-layout-wtf" viewBox="0 0 16 16"> <path d="M5 1v8H1V1zM1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm13 2v5H9V2zM9 1a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM5 13v2H3v-2zm-2-1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1zm12-1v2H9v-2zm-6-1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z"/> </svg>`;
+    listdiv.style.display = "none";
+  } else {
+    listicon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-layout-text-sidebar" viewBox="0 0 16 16" > <path d="M3.5 3a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM3 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1z" /> <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm12-1v14h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm-1 0H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h9z" /></svg > <span class='aptitle'>D's Record Studio</span>`;
+    listdiv.style.display = "block";
+    if (screenWidth <= 767) {
+      listdiv.style.width = "100%";
+    } else if (screenWidth >= 768 && screenWidth <= 1024) {
+      listdiv.style.width = "40%";
+      player.style.width = "60%";
+    } else {
+      listdiv.style.width = "30%";
+      player.style.width = "70%";
+    }
+  }
+}
