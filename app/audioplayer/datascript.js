@@ -19,6 +19,7 @@ if (!tracksrc) {
   document.body.style.backgroundImage = "url('player-thumb.png')";
   document.getElementById("trckdesc").style.display = "none";
 } else {
+  document.title = tracktitle + " | " + trackartist;
   document.getElementById("trckdesc").style.display = "block";
 }
 document.addEventListener("contextmenu", function (event) {
