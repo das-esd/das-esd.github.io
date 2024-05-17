@@ -8,7 +8,7 @@ body {
   overflow: hidden;
 }
 html {
-  overscroll-behavior: hidden;
+  overscroll-behavior: none;
 }
 .player {
   top: 0px;
