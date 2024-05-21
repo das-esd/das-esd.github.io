@@ -75,6 +75,24 @@ let track_list = [
     image: "/audios/files/image/record_thumb.png",
     path: "/audios/files/audio/record/This is life.m4a",
   },
+  {
+    name: "Kali - মনে কালী",
+    artist: "Es D (Soubhik Das)",
+    image: "/audios/files/image/record_thumb.png",
+    path: "/audios/files/audio/record/Kali - মনে কালী.wav",
+  },
+  {
+    name: "নতুন আলোর সন্ধান (New light)",
+    artist: "Es D (Soubhik Das)",
+    image: "/audios/files/image/record_thumb.png",
+    path: "/audios/files/audio/record/নতুন আলোর সন্ধান (New light).mp3",
+  },
+  {
+    name: "Bodhuya - বধুয়া",
+    artist: "Es D (Soubhik Das)",
+    image: "/audios/files/image/record_thumb.png",
+    path: "/audios/files/audio/record/Bodhuya - বধুয়া.mp3",
+  },
 ];
 
 function random_bg_color() {
