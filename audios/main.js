@@ -70,12 +70,6 @@ let track_list = [
     path: "/audios/files/audio/record/Fokirer sojja.m4a",
   },
   {
-    name: "This is life",
-    artist: "Es D (Soubhik Das)",
-    image: "/audios/files/image/record_thumb.png",
-    path: "/audios/files/audio/record/This is life.m4a",
-  },
-  {
     name: "Kali - মনে কালী",
     artist: "Es D (Soubhik Das)",
     image: "/audios/files/image/record_thumb.png",
@@ -92,6 +86,12 @@ let track_list = [
     artist: "Es D (Soubhik Das) & Sounds of Isha",
     image: "/audios/files/image/record_thumb.png",
     path: "/audios/files/audio/record/Bodhuya - বধুয়া.mp3",
+  },
+  {
+    name: "This is life",
+    artist: "Es D (Soubhik Das)",
+    image: "/audios/files/image/record_thumb.png",
+    path: "/audios/files/audio/record/This is life.m4a",
   },
 ];
 
