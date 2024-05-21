@@ -89,7 +89,7 @@ let track_list = [
   },
   {
     name: "Bodhuya - বধুয়া",
-    artist: "Es D (Soubhik Das)",
+    artist: "Es D (Soubhik Das) & Sounds of Isha",
     image: "/audios/files/image/record_thumb.png",
     path: "/audios/files/audio/record/Bodhuya - বধুয়া.mp3",
   },
