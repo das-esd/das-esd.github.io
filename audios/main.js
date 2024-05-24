@@ -22,6 +22,12 @@ let repeat_btn = document.querySelector(".repeat-track");
 // Define the tracks that have to be played
 let track_list = [
   {
+    name: "Inside Mirror",
+    artist: "Es D (Soubhik Das)",
+    image: "/audios/files/image/record_thumb.png",
+    path: "/audios/files/audio/record/Inside mirror.m4a",
+  },
+  {
     name: "মহাবীর (Great Warrior)",
     artist: "Es D (Soubhik Das)",
     image: "/audios/files/image/record_thumb.png",
