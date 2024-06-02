@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Gallery with Pagination</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center my-4">Video Gallery</h1>
+      <div class="video-container" id="videoContainer"></div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination" id="pagination"></ul>
+      </nav>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const videosPerPage = 20;
+        const totalVideos = 180;
+        const totalPages = Math.ceil(totalVideos / videosPerPage);
+        const videoContainer = document.getElementById("videoContainer");
+        const pagination = document.getElementById("pagination");
+
+        function loadVideos(page) {
+          videoContainer.innerHTML = "";
+          const start = (page - 1) * videosPerPage + 1;
+          const end = Math.min(start + videosPerPage - 1, totalVideos);
+
+          for (let i = start; i <= end; i++) {
+            const videoUrl = `https://mfiles.onrender.com/files/svids/${i}.mp4`;
+            const videoItem = document.createElement("div");
+            videoItem.classList.add("video-item");
+
+            videoItem.innerHTML = `
+                        <video controls src="${videoUrl}" onclick="this.play()"></video>
+                        <button class="btn btn-primary copy-button" onclick="copyToClipboard('${videoUrl}')">Copy URL</button>
+                    `;
+
+            videoContainer.appendChild(videoItem);
+          }
+        }
+
+        function createPagination() {
+          pagination.innerHTML = "";
+
+          for (let i = 1; i <= totalPages; i++) {
+            const pageItem = document.createElement("li");
+            pageItem.classList.add("page-item");
+            pageItem.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+            pageItem.addEventListener("click", (e) => {
+              e.preventDefault();
+              loadVideos(i);
+              setActivePage(i);
+            });
+
+            pagination.appendChild(pageItem);
+          }
+        }
+
+        function setActivePage(page) {
+          const pageItems = pagination.getElementsByClassName("page-item");
+          for (let i = 0; i < pageItems.length; i++) {
+            pageItems[i].classList.remove("active");
+          }
+          pageItems[page - 1].classList.add("active");
+          window.scrollTo(0, 0);
+        }
+
+        // Initial load
+        loadVideos(1);
+        createPagination();
+        setActivePage(1);
+      });
+
+      function copyToClipboard(url) {
+        navigator.clipboard
+          .writeText(url)
+          .then(() => {
+            alert("URL copied to clipboard: " + url);
+          })
+          .catch((err) => {
+            console.error("Failed to copy: ", err);
+          });
+      }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

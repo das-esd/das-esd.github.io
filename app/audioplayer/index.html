@@ -380,7 +380,7 @@
       right: 0px;
       position: fixed;
       padding: 5px;
-      background-color: #ffffff;
+      background-color: #979797;
       border-top-left-radius: 10px;
       max-width: 320px;
       display: none;
@@ -416,8 +416,13 @@
       border-radius: 10px;
       background-color: #ffffff99;
     }
+    #adpllnk {
+      border: 2px solid #b40f0fa2;
+      background-color: #d5d5d5;
+    }
     #infocon {
       background-color: #ffffff56;
+      width: 96%;
       max-width: 500px;
       padding: 20px;
       border-radius: 20px;
@@ -454,6 +459,156 @@
       opacity: 0.2;
       object-fit: cover;
     }
+    #chartcon {
+      top: 50px;
+      right: 0px;
+      width: 100%;
+      max-width: 27%;
+      position: fixed;
+      background-color: #85474789;
+
+      background: linear-gradient(
+        -45deg,
+        #e6e6e6b4,
+        #6a6abaa5,
+        #ffaa0da9,
+        #404040be
+      );
+      background-size: 500% 500%;
+      animation: gradient_b 60s ease infinite;
+      border-left: 1px solid white;
+
+      height: 87vh;
+      margin: 0px auto;
+      display: none;
+      overflow-y: auto;
+    }
+    #tracks-container {
+      display: flex; /* Use flexbox */
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      flex-wrap: wrap; /* Allow wrapping of items if there are multiple */
+    }
+
+    .track {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      background-color: #646464f1;
+      flex-direction: column; /* Stack track content vertically */
+      width: 250px; /* Set a fixed width for track items */
+      box-shadow: 0px 6px 10px 2px #1010106b;
+    }
+
+    .track img {
+      width: 40%;
+      /* height: 100px; */
+      margin-bottom: 10px; /* Adjust margin for better spacing */
+      border-radius: 50%;
+      box-shadow: 0px 6px 10px 2px #1010106b;
+    }
+
+    .track-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center text content */
+    }
+    .track-play {
+      width: 100%;
+      padding: 5px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 5px;
+      color: #dfa000;
+      font-weight: 500;
+      background-color: #121212;
+      border: 2px solid #818181;
+      border: none;
+    }
+    .track-play:focus,
+    .track-play:active,
+    .track-play:hover {
+      transform: scale(1.04);
+      background-color: #414141;
+    }
+    #crtaudlnk {
+      cursor: pointer;
+    }
+    #crtaudlnk:hover {
+      filter: brightness(0.6);
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+      width: 5px;
+      border-radius: 2px;
+      background-color: #292929b9;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: #4f4f4f;
+      border: 2px solid white;
+      border-radius: 2px;
+    }
+    #shrlnkds {
+      bottom: -30px;
+      right: 20px;
+      position: absolute;
+      cursor: pointer;
+      z-index: 1000;
+      width: 40px;
+      height: 40px;
+      padding: 5px;
+      border-radius: 50%;
+      background-color: #7979793f;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      box-shadow: 0px 3px 10px 2px #ffffff45;
+      margin: 0px auto;
+    }
+    #shrlnkds svg {
+      width: 20px;
+      height: 20px;
+      color: #da450a;
+    }
+    #shrlnkds:hover,
+    #shrlnkds:focus {
+      transform: scale(1.09);
+      opacity: 0.6;
+    }
+    #insocial {
+      font-size: 12px;
+      font-family: "Courier New", Courier, monospace;
+      bottom: 38px;
+      left: 5px;
+      z-index: 2000;
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #insocial svg {
+      margin-right: 5px;
+    }
+    #insocial a {
+      display: flex;
+      color: #8a8a8a;
+      cursor: pointer;
+      text-decoration: none;
+      margin: 5px;
+    }
+    #insocial a:hover,
+    #insocial a:active,
+    #insocial a:focus {
+      opacity: 0.7;
+    }
     @keyframes gradient_b {
       0% {
         background-position: 0% 50%;
@@ -468,6 +623,10 @@
       }
     }
     @media screen and (max-width: 600px) {
+      #chartcon {
+        border: 0px;
+        max-width: 100%;
+      }
       #infocon {
         margin-top: 20px;
         max-width: 350px;
@@ -504,6 +663,82 @@
           </h3>
         </div>
       </center>
+      <span title="Share Link" id="shrlnkds">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          class="bi bi-share-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5"
+          />
+        </svg>
+      </span>
+      <span id="insocial">
+        <a href="https://www.youtube.com/@DSonicMusic" target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            fill="currentColor"
+            class="bi bi-youtube"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"
+            />
+          </svg>
+          YouTube</a
+        >
+        |
+        <a href="https://www.facebook.com/DSonicPi/" target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            fill="currentColor"
+            class="bi bi-facebook"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"
+            />
+          </svg>
+          Facebook</a
+        >
+        |
+        <a href="https://www.instagram.com/dsonicpi/" target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            fill="currentColor"
+            class="bi bi-instagram"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
+            />
+          </svg>
+          Instagram</a
+        >
+        |
+        <a href="https://soundcloud.com/es-d-448766213" target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            style="width: 14px; height: 14px; filter: grayscale(1)"
+          >
+            <rect width="512" height="512" rx="15%" fill="#f50" />
+            <path
+              d="m59 270-3 22 3 22c0 2 3 2 3 0l3-22-3-22c0-3-3-3-3 0zm18-14c0-3-3-3-3 0l-5 36 4 35c0 3 4 3 4 0l4-35zm59-30-3 66 2 40c0 8 7 8 7 0l4-40-4-66c0-5-6-5-6 0zm-31 22-4 44 3 40c0 6 5 6 5 0l4-40-4-44c0-3-4-3-4 0zm70 84 3-40-3-88c0-6-7-6-7 0l-3 88 2 40c0 8 8 8 8 0zm68 0 2-40-2-102c0-7-10-7-10 0l-2 102 2 40c0 8 10 8 10 0zm-34 0 3-40-3-89c0-6-9-6-9 0l-2 89 2 40c0 8 9 8 9 0zm-83 0 3-40-3-41c0-3-6-3-6 0l-3 41 3 40c0 7 6 7 6 0zm-33 0 4-40-4-43c0-3-4-3-4 0l-4 43 4 40c0 4 4 4 4 0zm124-125-2 85 1 40c0 8 10 8 10 0l2-40-2-85c0-7-9-7-9 0zm-58 125 3-40-3-81c0-6-7-6-7 0l-3 81 2 40c0 8 8 8 8 0zm33 0 3-40-3-91c0-6-8-6-8 0l-3 91 3 40c0 8 8 8 8 0zm196-89c-5-57-64-94-118-73-4 2-5 3-5 6v156c0 3 2 6 5 6h137c27 0 49-22 49-49 0-37-35-57-68-46zm-138-62-3 111 3 40c0 8 10 8 10 0l3-40-3-111c0-7-10-7-10 0z"
+              fill="#fff"
+            />
+          </svg>
+          SoundCloud</a
+        >
+      </span>
       <img id="backfntrc" />
     </section>
     <div class="audioplayer">
@@ -530,7 +765,7 @@
           <div class="crtlnkdv" id="crtlnkdv">
             <form id="audioForm">
               <input
-                type="url"
+                type="text"
                 required
                 placeholder="[audio url]"
                 id="adurl"
@@ -551,19 +786,38 @@
                 id="adart"
                 placeholder="[ Artist ]"
                 maxlength="30"
-              /><input
+              />
+              <input
+                id="adpllnk"
+                style="width: 98%; display: none"
+                onclick="copyToClipboard()"
+              />
+              <input
                 type="submit"
-                value="Play"
+                value="Get Link"
                 style="background-color: rgb(24, 145, 16); color: white"
               /><input
-                type="button"
+                type="submit"
                 value="Close"
                 style="background-color: rgb(209, 29, 29); color: white"
-                onclick="document.getElementById('crtlnkdv').style.display='none';"
+                onclick="document.getElementById('crtlnkdv').style.display='none';
+                document.getElementById('adpllnk').style.display='none';
+                document.getElementById('audioForm').reset();"
+              />
+
+              <input
+                type="button"
+                value="Create DS/M Link"
+                style="
+                  background-color: rgb(231, 164, 18);
+                  color: black;
+                  width: 98%;
+                "
+                onclick="createdsmlink()"
               />
             </form>
           </div>
-
+          <div id="chartcon"><div id="tracks-container"></div></div>
           <svg
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"

@@ -1,20 +1,61 @@
 "use strict";
+// document.addEventListener("DOMContentLoaded", function () {
+//   let isResized = false;
+//   let isMobileDevice = /Mobi|Android/i.test(navigator.userAgent);
+//   let prevDocumentWidth = document.documentElement.clientWidth;
+
+//   window.addEventListener("resize", function () {
+//     isResized = true;
+//     console.log("Resize event detected");
+//   });
+
+//   setInterval(function () {
+//     if (isResized) {
+//       let currentDocumentWidth = document.documentElement.clientWidth;
+//       let widthDifference = Math.abs(currentDocumentWidth - prevDocumentWidth);
+//       console.log(widthDifference);
+//       if (
+//         (widthDifference >= 10 && widthDifference <= 60) ||
+//         widthDifference > 500
+//       ) {
+//         console.log(
+//           "Document width changed by " +
+//             widthDifference +
+//             " pixels and resize button is not clicked."
+//         );
+//         alert("Developer mode detected!");
+//       }
+//     }
+//   }, 50);
+// });
+
 const urlParams = new URLSearchParams(window.location.search);
-const tracksrc = urlParams.get("audio_url");
-const tracktitle = urlParams.get("title");
-const trackartist = urlParams.get("artist");
-const trackthumb = urlParams.get("thumb");
+var tracksrc = urlParams.get("audio_url");
+var tracktitle = urlParams.get("title");
+var trackartist = urlParams.get("artist");
+var trackthumb = urlParams.get("thumb");
 const player = document.getElementById("audioplayer");
 const title = document.getElementById("trtt");
 const artist = document.getElementById("trat");
 const thumb = document.getElementById("trth");
 const bcthumb = document.getElementById("backfntrc");
-player.setAttribute("data-src", tracksrc);
+const dsmusic = urlParams.get("_DSonicMusic");
+
+if (dsmusic && dsmusic !== "") {
+  var trackelm = dsmusic.split("::");
+  var tracktitle = fromUrlFriendly(trackelm[0]);
+  var tracksrc = window.atob(trackelm[1]);
+  var trackthumb = window.atob(trackelm[2]);
+  var trackartist = window.atob(trackelm[3]);
+  console.log(tracktitle);
+}
+
+player.setAttribute("src", tracksrc);
 title.innerText = tracktitle;
 artist.innerText = trackartist;
 thumb.src = trackthumb;
 bcthumb.src = trackthumb;
-console.log(tracksrc, tracktitle, trackartist);
+
 if (!tracksrc) {
   document.body.style.backgroundImage = "url('player-thumb.png')";
   document.getElementById("trckdesc").style.display = "none";
@@ -35,7 +76,7 @@ document
     var thumbnailUrl = document.getElementById("adthumb").value;
     var title = document.getElementById("adtit").value;
     var artist = document.getElementById("adart").value;
-
+    var trklnk = document.getElementById("adpllnk");
     var baseUrl = "https://soubhikdas.in/app/audioplayer/";
     var url =
       baseUrl +
@@ -47,9 +88,47 @@ document
       encodeURIComponent(title) +
       "&artist=" +
       encodeURIComponent(artist);
-
-    window.location.href = url;
+    trklnk.value = url;
+    trklnk.style.display = "block";
   });
+
+function createdsmlink() {
+  var audioUrl = document.getElementById("adurl").value;
+  var thumbnailUrl = document.getElementById("adthumb").value;
+  var title = document.getElementById("adtit").value;
+  var artist = document.getElementById("adart").value;
+  var trklnk = document.getElementById("adpllnk");
+  let Title = toUrlFriendly(title);
+  function ervl(val) {
+    val = window.btoa(val);
+    return val;
+  }
+  if (audioUrl != "" || thumbnailUrl != "" || title != "" || artist != "") {
+    var baseUrl = "https://soubhikdas.in/app/audioplayer/";
+    var erval =
+      Title +
+      "::" +
+      ervl(audioUrl) +
+      "::" +
+      ervl(thumbnailUrl) +
+      "::" +
+      ervl(artist) +
+      "::";
+    var url = baseUrl + "?_DSonicMusic=" + erval;
+
+    trklnk.value = url;
+    trklnk.style.display = "block";
+  }
+}
+
+function toUrlFriendly(str) {
+  let urlFriendlyStr = str.replace(/\s+/g, "-");
+  return urlFriendlyStr;
+}
+function fromUrlFriendly(str) {
+  let normalStr = str.replace(/-/g, " ");
+  return normalStr;
+}
 
 function GetCookie(cname) {
   var name = cname + "=";
@@ -91,3 +170,154 @@ function changeBoxShadow() {
 }
 
 changeBoxShadow();
+
+function copyToClipboard() {
+  var copyText = document.getElementById("adpllnk");
+
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value).then(
+    function () {
+      var notification = document.createElement("div");
+      notification.textContent = "Copied to clipboard!";
+      notification.style.position = "fixed";
+      notification.style.bottom = "7vh";
+      notification.style.left = "50%";
+      notification.style.transform = "translateX(-50%)";
+      notification.style.color = "white";
+      notification.style.padding = "10px";
+      notification.style.borderRadius = "5px";
+      notification.style.zIndex = "1000";
+      notification.style.fontFamily = "Courier New";
+      notification.style.fontSize = "14px";
+      document.body.appendChild(notification);
+
+      setTimeout(function () {
+        document.body.removeChild(notification);
+      }, 5000);
+    },
+    function () {
+      console.error("Failed to copy text to clipboard");
+    }
+  );
+}
+
+document.addEventListener("keydown", function (event) {
+  if (
+    event.key === "F12" ||
+    (event.ctrlKey &&
+      event.shiftKey &&
+      (event.key === "I" || event.key === "C")) ||
+    (event.ctrlKey && event.key === "U")
+  ) {
+    event.preventDefault();
+  }
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const tracksContainer = document.getElementById("tracks-container");
+
+  function createTrackDiv(track) {
+    const trackDiv = document.createElement("div");
+    trackDiv.classList.add("track");
+
+    const thumbnail = document.createElement("img");
+    thumbnail.src = "/app/audioplayer/dsmlogo.jpg";
+
+    const trackInfo = document.createElement("div");
+    trackInfo.classList.add("track-info");
+
+    const title = document.createElement("p");
+    title.textContent = track.title;
+
+    const playbtn = document.createElement("button");
+    playbtn.innerHTML = "Play ▶️";
+    playbtn.classList.add("track-play");
+
+    trackInfo.appendChild(title);
+    trackInfo.appendChild(playbtn);
+    trackDiv.appendChild(thumbnail);
+    trackDiv.appendChild(trackInfo);
+
+    playbtn.addEventListener("click", () => {
+      window.open(track.src, "_self");
+    });
+
+    return trackDiv;
+  }
+
+  // Fetch the JSON data
+  fetch("/audios/files/audio/dsmusic/chart.json")
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((track) => {
+        const trackDiv = createTrackDiv(track);
+        tracksContainer.appendChild(trackDiv);
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching or parsing JSON:", error);
+    });
+});
+const tglelm = document.getElementById("chartcon");
+var trckdescDiv = document.getElementById("trckdesc");
+
+document.getElementById("crtaudlnk").addEventListener("click", function () {
+  if (tglelm.style.display === "block") {
+    tglelm.style.display = "none";
+    trckdescDiv.style.width = "100%";
+  } else {
+    tglelm.style.display = "block";
+    var currentWidth = parseFloat(getComputedStyle(trckdescDiv).width);
+    var parentWidth = parseFloat(
+      getComputedStyle(trckdescDiv.parentNode).width
+    );
+    var currentWidthPercent = (currentWidth / parentWidth) * 100;
+
+    if (window.innerWidth > 500) {
+      // Ensure the new width doesn't go below 0%
+      var newWidthPercent = Math.max(currentWidthPercent - 30, 0);
+      trckdescDiv.style.width = newWidthPercent + "%";
+    }
+  }
+});
+document.getElementById("shrlnkds").addEventListener("click", copyshrlnk);
+
+function copyshrlnk() {
+  var copyText = window.location.href;
+
+  var tempInput = document.createElement("input");
+  tempInput.style.display = "none";
+  tempInput.value = copyText;
+  document.body.appendChild(tempInput);
+
+  tempInput.select();
+  tempInput.setSelectionRange(0, 99999);
+
+  navigator.clipboard.writeText(tempInput.value).then(
+    function () {
+      document.body.removeChild(tempInput);
+
+      var notification = document.createElement("div");
+      notification.textContent = "Link Copied!";
+      notification.style.position = "fixed";
+      notification.style.bottom = "7vh";
+      notification.style.left = "50%";
+      notification.style.transform = "translateX(-50%)";
+      notification.style.backgroundColor = "black";
+      notification.style.color = "white";
+      notification.style.padding = "10px";
+      notification.style.borderRadius = "0px";
+      notification.style.zIndex = "1000";
+      notification.style.fontFamily = "Courier New";
+      notification.style.fontSize = "14px";
+      document.body.appendChild(notification);
+
+      setTimeout(function () {
+        document.body.removeChild(notification);
+      }, 5000);
+    },
+    function () {
+      console.error("Failed to copy text to clipboard");
+    }
+  );
+}
