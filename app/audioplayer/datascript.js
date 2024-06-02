@@ -1,33 +1,33 @@
 "use strict";
-// document.addEventListener("DOMContentLoaded", function () {
-//   let isResized = false;
-//   let isMobileDevice = /Mobi|Android/i.test(navigator.userAgent);
-//   let prevDocumentWidth = document.documentElement.clientWidth;
+document.addEventListener("DOMContentLoaded", function () {
+  let isResized = false;
+  let isMobileDevice = /Mobi|Android/i.test(navigator.userAgent);
+  let prevDocumentWidth = document.documentElement.clientWidth;
 
-//   window.addEventListener("resize", function () {
-//     isResized = true;
-//     console.log("Resize event detected");
-//   });
+  window.addEventListener("resize", function () {
+    isResized = true;
+    console.log("Resize event detected");
+  });
 
-//   setInterval(function () {
-//     if (isResized) {
-//       let currentDocumentWidth = document.documentElement.clientWidth;
-//       let widthDifference = Math.abs(currentDocumentWidth - prevDocumentWidth);
-//       console.log(widthDifference);
-//       if (
-//         (widthDifference >= 10 && widthDifference <= 60) ||
-//         widthDifference > 500
-//       ) {
-//         console.log(
-//           "Document width changed by " +
-//             widthDifference +
-//             " pixels and resize button is not clicked."
-//         );
-//         alert("Developer mode detected!");
-//       }
-//     }
-//   }, 50);
-// });
+  setInterval(function () {
+    if (isResized) {
+      let currentDocumentWidth = document.documentElement.clientWidth;
+      let widthDifference = Math.abs(currentDocumentWidth - prevDocumentWidth);
+      console.log(widthDifference);
+      if (
+        (widthDifference >= 10 && widthDifference <= 60) ||
+        widthDifference > 500
+      ) {
+        console.log(
+          "Document width changed by " +
+            widthDifference +
+            " pixels and resize button is not clicked."
+        );
+        alert("Developer mode detected!");
+      }
+    }
+  }, 50);
+});
 
 const urlParams = new URLSearchParams(window.location.search);
 var tracksrc = urlParams.get("audio_url");
