@@ -4,29 +4,31 @@ document.addEventListener("DOMContentLoaded", function () {
   let isMobileDevice = /Mobi|Android/i.test(navigator.userAgent);
   let prevDocumentWidth = document.documentElement.clientWidth;
 
-  window.addEventListener("resize", function () {
-    isResized = true;
-    console.log("Resize event detected");
-  });
+  if (window.self === window.top) {
+    window.addEventListener("resize", function () {
+      isResized = true;
+    });
 
-  setInterval(function () {
-    if (isResized) {
-      let currentDocumentWidth = document.documentElement.clientWidth;
-      let widthDifference = Math.abs(currentDocumentWidth - prevDocumentWidth);
-      console.log(widthDifference);
-      if (
-        (widthDifference >= 10 && widthDifference <= 60) ||
-        widthDifference > 500
-      ) {
-        console.log(
-          "Document width changed by " +
-            widthDifference +
-            " pixels and resize button is not clicked."
+    setInterval(function () {
+      if (isResized && !isMobileDevice) {
+        let currentDocumentWidth = document.documentElement.clientWidth;
+        let widthDifference = Math.abs(
+          currentDocumentWidth - prevDocumentWidth
         );
-        alert("Developer mode detected!");
+        if (
+          (widthDifference >= 10 && widthDifference <= 60) ||
+          widthDifference > 500
+        ) {
+          console.log(
+            "Document width changed by " +
+              widthDifference +
+              " pixels and resize button is not clicked."
+          );
+          alert("Developer mode detected!");
+        }
       }
-    }
-  }, 50);
+    }, 50);
+  }
 });
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -47,7 +49,8 @@ if (dsmusic && dsmusic !== "") {
   var tracksrc = window.atob(trackelm[1]);
   var trackthumb = window.atob(trackelm[2]);
   var trackartist = window.atob(trackelm[3]);
-  console.log(tracktitle);
+  document.getElementById("chartcon").style.visibility = "visible";
+  document.getElementById("crtaudlnk").style.pointerEvents = "auto";
 }
 
 player.setAttribute("src", tracksrc);
