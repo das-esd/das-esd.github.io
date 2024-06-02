@@ -4099,6 +4099,8 @@
     }
     .border-radius {
       border-radius: 0.25rem;
+      -webkit-border-radius:  0.25rem;
+      -moz-border-radius:  0.25rem;
     }
     .border-radius-half {
       border-radius: 50%;
@@ -4288,6 +4290,8 @@
     }
     .rounded {
       border-radius: 0.25rem !important;
+      -webkit-border-radius: 0.25rem !important;
+      -moz-border-radius: 0.25rem !important;
     }
     .border-50 {
       border-radius: 50% !important;
