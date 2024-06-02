@@ -4102,7 +4102,10 @@
     }
     .border-radius-half {
       border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
     }
+    
     .border-20 {
       border-width: 20px;
     }
@@ -4288,6 +4291,8 @@
     }
     .border-50 {
       border-radius: 50% !important;
+      -webkit-border-radius: 50% !important;
+      -moz-border-radius: 50%!important;
     }
     .border-solid {
       border-style: solid !important;
@@ -29256,7 +29261,8 @@
     .activity-cycle .cycle::before {
       content: "";
       position: absolute;
-      border-radius: 50%;
+      border-radius: 50%;-webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
       border: 3px solid transparent;
       border-top-color: #fff;
     }
@@ -29335,13 +29341,15 @@
       height: 64px;
       border-radius: 50%;
       -webkit-perspective: 800px;
-      perspective: 800px;
+      perspective: 800px;-webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
     }
     .activity-atom span {
       position: absolute;
       width: 100%;
       height: 100%;
-      border-radius: 50%;
+      border-radius: 50%;-webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
     }
     .activity-atom span:nth-child(1) {
       left: 0;
@@ -30246,7 +30254,8 @@
       height: 3.3125rem;
     }
     .button.cycle {
-      border-radius: 50%;
+      border-radius: 50%;-webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
     }
     .button.cycle.dropdown-toggle::before,
     .button.square.dropdown-toggle::before {
@@ -33887,7 +33896,8 @@
     .donut {
       display: block;
       position: relative;
-      border-radius: 50%;
+      border-radius: 50%;-webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
     }
     .donut > svg {
       width: 100%;
@@ -43747,7 +43757,8 @@
       float: left;
       width: 64px;
       height: auto;
-      border-radius: 50%;
+      border-radius: 50%;-webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
       overflow: hidden;
     }
     .skill-box .header .title {
@@ -43849,7 +43860,8 @@
       position: absolute;
       width: 3.125rem;
       height: 3.125rem;
-      border-radius: 50%;
+      border-radius: 50%;-webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
       background-color: rgba(187, 187, 187, 0.5);
       opacity: 0.3;
       top: 50%;
@@ -43952,7 +43964,8 @@
       height: 4px;
     }
     .slider.cycle-marker .marker {
-      border-radius: 50%;
+      border-radius: 50%;-webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
     }
     .slider.vertical-slider {
       width: 2.125rem;
@@ -44034,7 +44047,8 @@
       position: absolute;
       width: 90px;
       height: auto;
-      border-radius: 50%;
+      border-radius: 50%;-webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
       overflow: hidden;
       top: 100%;
       left: 50%;
@@ -44387,7 +44401,8 @@
       color: #fff;
     }
     .stepper.cycle .step {
-      border-radius: 50%;
+      border-radius: 50%;-webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
     }
     .stepper.diamond .step {
       -webkit-transform: rotate(45deg);
@@ -45239,6 +45254,8 @@
       background: #333;
       z-index: 2;
       border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
     }
     .switch input[type="checkbox"]:checked ~ .check {
       background: #1d1d1d;
