@@ -277,7 +277,6 @@ document.getElementById("crtaudlnk").addEventListener("click", function () {
     var currentWidthPercent = (currentWidth / parentWidth) * 100;
 
     if (window.innerWidth > 500) {
-      // Ensure the new width doesn't go below 0%
       var newWidthPercent = Math.max(currentWidthPercent - 30, 0);
       trckdescDiv.style.width = newWidthPercent + "%";
     }
