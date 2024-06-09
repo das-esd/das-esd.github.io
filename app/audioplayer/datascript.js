@@ -154,6 +154,24 @@ if (crtaudlnk && useru != null) {
   crtaudlnk.addEventListener("click", function () {
     document.getElementById("crtlnkdv").style.display = "block";
   });
+} else {
+  reqtokendsms();
+  player.setAttribute("src", "#");
+}
+
+function reqtokendsms() {
+  var newDiv = document.createElement("div");
+  newDiv.classList.add("req-token");
+  var form = document.createElement("form");
+  form.innerHTML = `
+      <div class="form-container">
+        <span>🔔</span><button type="button" onclick="window.open('mailto:d.soubhik@outlook.com')">Request Access</button><br>
+        <p>Send mail: D.SOUBHIK@OUTLOOK.COM</p>
+      </div>
+    `;
+
+  newDiv.appendChild(form);
+  document.body.appendChild(newDiv);
 }
 
 function changeBoxShadow() {
@@ -248,7 +266,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return trackDiv;
   }
 
-  // Fetch the JSON data
   fetch("/audios/files/audio/dsmusic/chart.json")
     .then((response) => response.json())
     .then((data) => {
@@ -323,3 +340,20 @@ function copyshrlnk() {
     }
   );
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const errorImage = "/assets/img/image-error.png";
+  document.body.addEventListener(
+    "error",
+    (event) => {
+      const target = event.target;
+      if (target.tagName === "IMG") {
+        target.src = errorImage;
+      }
+    },
+    true
+  );
+});
+setInterval(function () {
+  console.clear();
+}, 100);

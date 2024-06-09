@@ -11,14 +11,14 @@ if (r == "true" && chkfltyp[1] == "") {
   var f_urlF = fullurl[1];
   var f_url = unescape(f_urlF.replace("+", " "));
   var f_meta = m;
-  document.title = f_meta + " | DasLive";
+  document.title = f_meta + " | D's World";
 } else if (r == "true" && chkfltyp.length == 1) {
   $("#crtpdflk,#formContainer").hide();
   $("#objcont").show();
   document.getElementById("objcont").innerHTML =
     "<object data='" + unescape(chkfltyp[0]) + "' id='objfrm'></object>";
   var f_meta = m;
-  document.title = f_meta + " | DasLive";
+  document.title = f_meta + " | D's World";
 }
 document.addEventListener("click", function () {
   window.open(f_url, "_blank");

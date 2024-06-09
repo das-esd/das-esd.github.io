@@ -287,6 +287,20 @@ function ctrlqevrmv(e) {
   liveond();
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const errorImage = "assets/img/image-error.png";
+  document.body.addEventListener(
+    "error",
+    (event) => {
+      const target = event.target;
+      if (target.tagName === "IMG") {
+        target.src = errorImage;
+      }
+    },
+    true
+  );
+});
+
 ///////////Cookie/////////////
 
 var SetCookie = function (exdays, uid) {

@@ -1,22 +1,23 @@
 {
-    "dir": "ltr",
-    "lang": "en-us",
-    "name": "DasLive @itsEsD",
-    "scope": "/",
-    "display": "standalone",
-    "start_url": "/",
-    "short_name": "D's WORLD",
-    "description": "A Static Discharge", 
-    "orientation": "any",
-    "theme_color": "#000000",
-    "background_color": "#000000",
-    "related_applications": [],
-    "prefer_related_applications": false,
-    "icons": [{
-        "src": "../assets/img/manifest/icon512.png",
-        "sizes": "512x512",
-        "type": "image/png",
-        "purpose": "maskable any"
+  "dir": "ltr",
+  "lang": "en-us",
+  "name": "D's World ",
+  "scope": "/",
+  "display": "standalone",
+  "start_url": "/",
+  "short_name": "D's WORLD",
+  "description": "A Static Discharge",
+  "orientation": "any",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "../assets/img/manifest/icon512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
     }
-    ]
+  ]
 }
