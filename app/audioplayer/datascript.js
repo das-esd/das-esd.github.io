@@ -50,7 +50,7 @@ if (dsmusic && dsmusic !== "") {
   var trackthumb = window.atob(trackelm[2]);
   var trackartist = window.atob(trackelm[3]);
   document.getElementById("chartcon").style.visibility = "visible";
-  document.getElementById("crtaudlnk").style.pointerEvents = "auto";
+  document.getElementById("shwdstrck").style.pointerEvents = "auto";
 }
 
 player.setAttribute("src", tracksrc);
@@ -149,14 +149,17 @@ function GetCookie(cname) {
   return null;
 }
 var useru = GetCookie("_dfunc");
+var userds = GetCookie("_dsmuse");
 var crtaudlnk = document.getElementById("crtaudlnk");
+if (useru === null && userds === null) {
+  reqtokendsms();
+  player.setAttribute("src", "#");
+}
 if (crtaudlnk && useru != null) {
+  crtaudlnk.style.display = "inline-block";
   crtaudlnk.addEventListener("click", function () {
     document.getElementById("crtlnkdv").style.display = "block";
   });
-} else {
-  reqtokendsms();
-  player.setAttribute("src", "#");
 }
 
 function reqtokendsms() {
@@ -266,9 +269,17 @@ document.addEventListener("DOMContentLoaded", function () {
     return trackDiv;
   }
 
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
   fetch("/audios/files/audio/dsmusic/chart.json")
     .then((response) => response.json())
     .then((data) => {
+      shuffleArray(data);
       data.forEach((track) => {
         const trackDiv = createTrackDiv(track);
         tracksContainer.appendChild(trackDiv);
@@ -278,10 +289,11 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error fetching or parsing JSON:", error);
     });
 });
+
 const tglelm = document.getElementById("chartcon");
 var trckdescDiv = document.getElementById("trckdesc");
 
-document.getElementById("crtaudlnk").addEventListener("click", function () {
+document.getElementById("shwdstrck").addEventListener("click", function () {
   if (tglelm.style.display === "block") {
     tglelm.style.display = "none";
     trckdescDiv.style.width = "100%";

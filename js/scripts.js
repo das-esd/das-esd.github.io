@@ -464,3 +464,43 @@ window.addEventListener("click", function (event) {
     modal.style.display = "none";
   }
 });
+
+// ///////////////
+
+// Function to create a cookie
+function createCookie(name, value, days) {
+  let expires = "";
+  if (days) {
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+async function validateForm(event) {
+  event.preventDefault();
+
+  const geoID = document.getElementById("glddid").value;
+  const key = document.getElementById("justpass").value;
+
+  try {
+    const response = await fetch("keys.json");
+    const data = await response.json();
+
+    const validEntry = data.keys.find(
+      (entry) => entry.GeoID === geoID && entry.Key === key
+    );
+
+    if (validEntry) {
+      createCookie("_dsmuse", "valid", 7); // Create cookie '_dsmuse' valid for 7 days
+      alert("Validation successful!");
+      document.getElementById("inlivefrm").reset();
+      $("#signdiv").hide("fast");
+    }
+  } catch (error) {
+    console.error("Error fetching JSON:", error);
+  }
+}
+
+document.getElementById("inlivefrm").addEventListener("submit", validateForm);
