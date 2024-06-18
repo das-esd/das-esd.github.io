@@ -151,7 +151,7 @@ function GetCookie(cname) {
 var useru = GetCookie("_dfunc");
 var userds = GetCookie("_dsmuse");
 var crtaudlnk = document.getElementById("crtaudlnk");
-if (useru === null && userds === null) {
+if (!useru && !userds) {
   reqtokendsms();
   player.setAttribute("src", "#");
 }
