@@ -22,6 +22,12 @@ let repeat_btn = document.querySelector(".repeat-track");
 // Define the tracks that have to be played
 let track_list = [
   {
+    name: "Lord একা",
+    artist: "Es D (Soubhik Das)",
+    image: "/audios/files/image/record_thumb.png",
+    path: "/audios/files/audio/record/Lord একা.m4a",
+  },
+  {
     name: "অচল স্মৃতি (Unmoving memories) R. Tagore",
     artist: "Es D (Soubhik Das)",
     image: "/audios/files/image/record_thumb.png",
