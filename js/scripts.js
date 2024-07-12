@@ -375,6 +375,7 @@ if (ewf_expire) {
 }
 
 $(document).ready(function loadartpst() {
+  document.getElementById("mvntartcon").classList.add("loading-spin");
   var ur1 = "https://script.google.com/macros/s/";
   var ur2 =
     "AKfycbxc6Ljdrah_Y32syw7bILdTQoevZ39VpGfNztpq1l18JN_d4njnTWcw3nQne99TN_6cKw";
@@ -402,6 +403,7 @@ function inrd(e) {
       '</div><div id="clsmynt" onclick="showntbtn(this);">CLOSE</div>';
     $("#about").append(elem);
     document.getElementById("shwmnote").style.display = "block";
+    document.getElementById("mvntartcon").classList.remove("loading-spin");
   }
   elem2.innerHTML = e.record2;
   document.getElementById("sectutor").style.display = "block";
