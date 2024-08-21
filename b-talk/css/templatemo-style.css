@@ -139,13 +139,13 @@ button:focus {
   background-color: #585858;
 }
 .tm-bg-white-translucent p {
-  color: #ffffff;
+  color: #000000;
 }
 
 .tm-textbox {
   display: inline-block;
   padding: 40px 45px;
-  max-height: 390px;
+  max-height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
   word-wrap: break-word;
@@ -160,7 +160,7 @@ button:focus {
   width: 100%;
 }
 .tm-textbox-1-col {
-  max-width: 600px;
+  max-width: 650px;
 }
 
 .cd-hero-slider .tm-text {
@@ -169,7 +169,7 @@ button:focus {
 }
 
 .tm-2-col-container {
-  max-width: 860px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -479,7 +479,7 @@ textarea {
   height: 100%;
 }
 .cd-hero-slider .js-tm-page-content.tm-page-1 {
-  margin-top: 70px;
+  margin-top: 20px;
 }
 
 /* Media Queries */
@@ -497,13 +497,13 @@ textarea {
 
 @media only screen and (min-width: 465px) {
   .cd-hero-slider .js-tm-page-content.tm-page-1 {
-    margin-top: 100px;
+    margin-top: 10px;
   }
 }
 
 @media only screen and (min-width: 768px) {
   .cd-hero-slider .js-tm-page-content.tm-page-1 {
-    margin-top: 120px;
+    margin-top: 20px;
   }
 
   .navbar-nav .nav-item {
@@ -599,16 +599,41 @@ textarea {
   border: none;
   cursor: pointer;
   padding: 4px 10px;
-  background-color: #ffffff9a;
+  background-color: #fffffff0;
 }
 .footleft:hover {
   background-color: #ffffffb4;
 }
 .footleft svg {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
 }
-
+#ftstcon {
+  bottom: 70px;
+  left: 10px;
+  position: fixed;
+  display: block;
+  width: 335px;
+  padding: 15px;
+  padding-bottom: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: inset -5px -5px #0611ac;
+  display: none;
+}
+#ftstcon a {
+  color: black;
+  font-size: 14px;
+  display: inline-block;
+  padding: 4px 10px;
+  margin: 3px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  box-shadow: inset -3px -3px #0611ac7a;
+}
+#ftstcon a:hover {
+  transform: scale(0.9);
+}
 .upsticky {
   top: 0px;
   position: sticky;
@@ -620,8 +645,9 @@ textarea {
   color: rgb(0, 0, 0);
 }
 .tm-bg-white-translucent {
-  background-color: #0c0c0cde;
+  background-color: #ffffffde;
   padding: 0px;
+  color: #000000;
 }
 .btalkcon {
   padding: 10px;
@@ -696,7 +722,7 @@ textarea {
   cursor: pointer;
 }
 .tm-textbox-1-col hr {
-  border-color: white;
+  border-color: #606060;
 }
 .fullscreen {
   position: fixed;

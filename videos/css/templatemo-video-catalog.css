@@ -673,6 +673,7 @@ video {
   position: fixed;
   cursor: pointer;
   z-index: 20000;
+  border-radius: 5px !important;
 }
 
 .footleft button:hover {
@@ -681,6 +682,59 @@ video {
 .footleft svg {
   width: 30px;
   height: 30px;
+}
+#ftstcon {
+  bottom: 70px;
+  left: 10px;
+  position: fixed;
+  display: block;
+  width: 335px;
+  padding: 15px;
+  padding-bottom: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: inset -5px -5px #0611ac;
+  display: none;
+}
+#ftstcon a {
+  color: black;
+  font-size: 14px;
+  display: inline-block;
+  padding: 4px 10px;
+  margin: 3px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  box-shadow: inset -3px -3px #0611ac7a;
+}
+#ftstcon a:hover {
+  transform: scale(0.9);
+}
+#ftstcon {
+  bottom: 70px;
+  left: 10px;
+  position: fixed;
+  display: block;
+  width: 335px;
+  padding: 15px;
+  padding-bottom: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: inset -5px -5px #363636;
+  z-index: 2000;
+  display: none;
+}
+#ftstcon a {
+  color: black;
+  font-size: 14px;
+  display: inline-block;
+  padding: 4px 10px;
+  margin: 3px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  box-shadow: inset -3px -3px #3636367a;
+}
+#ftstcon a:hover {
+  transform: scale(0.9);
 }
 button {
   border: 0px;

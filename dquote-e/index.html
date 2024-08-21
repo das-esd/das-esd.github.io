@@ -1253,7 +1253,11 @@
 
     <footer>
       <span
-        ><button class="footleft" onclick="window.open('../','_self');">
+        ><button
+          class="footleft"
+          onclick='var elem = document.getElementById("ftstcon");if(elem.style.display=="none"){elem.style.display="block";}else{elem.style.display="none"}'
+          style="border-radius: 5px; padding: 5px 10px"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -1280,6 +1284,37 @@
         "
         >© DAS</a
       >
+      <div id="ftstcon">
+        <a target="_blank" href="https://amrit-corp.com">AMRIT-Corp.com</a>
+        <a target="_blank" href="https://mwfbiz.com">🌐 mwfbiz.COM</a
+        ><a target="_blank" href="https://mastrowall.com/"
+          >M A S T R O W A L L</a
+        >&nbsp;
+        <a target="_blank" href="https://github.com/das-esd">GitHub 🧑‍💻</a>&nbsp;
+        <a target="_blank" href="https://soubhikdas.in/b-talk/">B Talk 🧑‍💼</a>
+        <a target="_blank" href="https://soubhikdas.in/dquote-e/"
+          >DQuote E 🤔</a
+        >
+        <a target="_blank" href="https://soubhikdas.in/gallery/">Gallery 🌌</a>
+        <a target="_blank" href="https://soubhikdas.in/audios/"
+          >Recordings 🎙️</a
+        >
+        <a
+          target="_blank"
+          href="https://soubhikdas.in/app/audioplayer/?_DSonicMusic=Socio-Leaf::L2F1ZGlvcy9maWxlcy9hdWRpby9kc211c2ljL3RyYWNrcy8yL1NvY2lvIExlYWYubTRh::aHR0cHM6Ly9pLmltZ3VyLmNvbS81b201MlVTLnBuZw==::RXMgRCAoU291YmhpayBEYXMp::"
+          >DSonic Music 🎹</a
+        ><span
+          style="
+            top: 0px;
+            right: 15px;
+            position: absolute;
+            cursor: pointer;
+            font-size: 18px;
+          "
+          onclick="document.getElementById('ftstcon').style.display='none';"
+          >&times;</span
+        >
+      </div>
     </footer>
 
     <!-- SCRIPTS -->
