@@ -165,10 +165,10 @@ if (crtaudlnk && useru != null) {
 function reqtokendsms() {
   var newDiv = document.createElement("div");
   newDiv.classList.add("req-token");
-  var form = document.createElement("form");
+  var form = document.createElement("div");
   form.innerHTML = `
-      <div class="form-container">
-        <span>🔔</span><button type="button" onclick="window.open('mailto:d.soubhik@outlook.com')">Request Access</button><br>
+      <div class="form-container keyftch">
+        <span>🔔</span><form id="keyftch"><input id="glddid" placeholder="Geo ID: *****" required><input id="justpass" placeholder="Key: *****" required><input type="submit" value='Contune >>'><br>
         <p>Send mail: D.SOUBHIK@OUTLOOK.COM</p>
       </div>
     `;
@@ -366,6 +366,42 @@ document.addEventListener("DOMContentLoaded", () => {
     true
   );
 });
+
 setInterval(function () {
   console.clear();
 }, 100);
+
+function createCookie(name, value, days) {
+  let expires = "";
+  if (days) {
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie =
+    name + "=" + (value || "") + expires + "; path=/;domain=soubhikdas.in";
+}
+async function validateForm(event) {
+  event.preventDefault();
+
+  const geoID = document.getElementById("glddid").value;
+  const key = document.getElementById("justpass").value;
+
+  try {
+    const response = await fetch("../../keys.json");
+    const data = await response.json();
+
+    const validEntry = data.keys.find(
+      (entry) => entry.GeoID === geoID && entry.Key === key
+    );
+
+    if (validEntry) {
+      createCookie("_dsmuse", "valid", 7); // Create cookie '_dsmuse' valid for 7 days
+      alert("Validation successful!");
+      window.location.reload();
+    }
+  } catch (error) {
+    console.error("Error fetching JSON:", error);
+  }
+}
+document.getElementById("keyftch").addEventListener("submit", validateForm);
