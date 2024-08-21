@@ -732,6 +732,7 @@ video {
   border: 1px solid grey;
   border-radius: 5px;
   box-shadow: inset -3px -3px #3636367a;
+  text-decoration: none;
 }
 #ftstcon a:hover {
   transform: scale(0.9);
