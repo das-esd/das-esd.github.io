@@ -119,6 +119,20 @@ function handleSwipe() {
   }
 }
 
+var onlongtouch;
+var timer;
+var touchduration = 500;
+
+function touchstart() {
+  timer = setTimeout(onlongtouch, touchduration);
+}
+function touchend() {
+  if (timer) clearTimeout(timer);
+}
+onlongtouch = function () {
+  clearInterval(autoSlideInterval);
+};
+
 carousel.addEventListener("click", (e) => {
   if (
     e.target === nextButton ||
