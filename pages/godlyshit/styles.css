@@ -82,6 +82,7 @@ html {
   max-height: 100%;
   width: auto;
   object-fit: contain;
+  pointer-events: none;
 }
 .play-pause-button {
   top: 0px;
