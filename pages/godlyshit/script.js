@@ -95,21 +95,26 @@ prevButton.addEventListener("click", (e) => {
   }
 });
 
+const touchduration = 500;
+let timer;
+let onlongtouch;
+
 carousel.addEventListener("touchstart", (e) => {
   startX = e.touches[0].clientX;
   startY = e.touches[0].clientY;
+  timer = setTimeout(onlongtouch, touchduration);
 });
 
 carousel.addEventListener("touchend", (e) => {
   endX = e.changedTouches[0].clientX;
   endY = e.changedTouches[0].clientY;
+  if (timer) clearTimeout(timer);
   handleSwipe();
 });
 
 function handleSwipe() {
   const diffX = startX - endX;
   const diffY = startY - endY;
-
   if (Math.abs(diffX) > Math.abs(diffY)) {
     if (diffX > 50 && currentIndex < stories.length - 1) {
       showStory(currentIndex + 1);
@@ -119,16 +124,6 @@ function handleSwipe() {
   }
 }
 
-var onlongtouch;
-var timer;
-var touchduration = 500;
-
-function touchstart() {
-  timer = setTimeout(onlongtouch, touchduration);
-}
-function touchend() {
-  if (timer) clearTimeout(timer);
-}
 onlongtouch = function () {
   clearInterval(autoSlideInterval);
 };
