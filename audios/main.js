@@ -22,6 +22,12 @@ let repeat_btn = document.querySelector(".repeat-track");
 // Define the tracks that have to be played
 let track_list = [
   {
+    name: "Journey",
+    artist: "Es D (Soubhik Das)",
+    image: "/audios/files/image/record_thumb.png",
+    path: "/audios/files/audio/record/Journey.m4a",
+  },
+  {
     name: "Moonlight Melancholy",
     artist: "Es D (Soubhik Das)",
     image: "/audios/files/image/record_thumb.png",
