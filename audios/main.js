@@ -366,3 +366,6 @@ function toggleplaylist() {
     }
   }
 }
+setInterval(function () {
+  console.clear();
+}, 100);
