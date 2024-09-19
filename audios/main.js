@@ -22,6 +22,12 @@ let repeat_btn = document.querySelector(".repeat-track");
 // Define the tracks that have to be played
 let track_list = [
   {
+    name: "আধুনিক (Modern)",
+    artist: "Es D (Soubhik Das)",
+    image: "/audios/files/image/record_thumb.png",
+    path: "/audios/files/audio/record/আধুনিক (Modern).m4a",
+  },
+  {
     name: "Journey",
     artist: "Es D (Soubhik Das)",
     image: "/audios/files/image/record_thumb.png",
