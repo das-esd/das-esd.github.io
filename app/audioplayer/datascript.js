@@ -42,6 +42,8 @@ const artist = document.getElementById("trat");
 const thumb = document.getElementById("trth");
 const bcthumb = document.getElementById("backfntrc");
 const dsmusic = urlParams.get("_DSonicMusic");
+const ssmuse = urlParams.get("_SSmuse");
+var ssflag = false;
 
 if (dsmusic && dsmusic !== "") {
   var trackelm = dsmusic.split("::");
@@ -49,6 +51,10 @@ if (dsmusic && dsmusic !== "") {
   var tracksrc = window.atob(trackelm[1]);
   var trackthumb = window.atob(trackelm[2]);
   var trackartist = window.atob(trackelm[3]);
+  document.getElementById("chartcon").style.visibility = "visible";
+  document.getElementById("shwdstrck").style.pointerEvents = "auto";
+} else if (ssmuse && ssmuse === "true") {
+  ssflag = true;
   document.getElementById("chartcon").style.visibility = "visible";
   document.getElementById("shwdstrck").style.pointerEvents = "auto";
 }
@@ -284,6 +290,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const trackDiv = createTrackDiv(track);
         tracksContainer.appendChild(trackDiv);
       });
+      console.log(data[1].src);
+      if (ssflag) {
+        var sstrack = data[1].src;
+        window.open(sstrack, "_self");
+      }
     })
     .catch((error) => {
       console.error("Error fetching or parsing JSON:", error);
