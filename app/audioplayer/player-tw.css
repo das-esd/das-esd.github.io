@@ -617,6 +617,9 @@ input[type="button"] {
   }
 }
 @media screen and (max-width: 720px) {
+  .track-info {
+    font-size: 15px;
+  }
   #chartcon {
     border: 0px;
     max-width: 100%;
@@ -666,5 +669,8 @@ input[type="button"] {
   }
   h3 {
     font-size: 18px;
+  }
+  .track-info {
+    font-size: 15px;
   }
 }
