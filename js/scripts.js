@@ -157,7 +157,7 @@ function loadaudio() {
   $("#adapp").load("audios/adapp.html");
 }
 /////////////////Calender////////////////
-
+var isRequestInProgress = false;
 function getcalendar() {
   var calendarEl = document.getElementById("calendar");
   var preevent = $("#allsvevnt").val();
@@ -192,7 +192,6 @@ function getcalendar() {
     selectMirror: true,
     select: function (arg) {
       var title = prompt("Event Title:");
-      // Check and Restrict String
       var checkstr = function (title) {
         var fl1 = title.split('"');
         var fl2 = title.split("e}");
@@ -238,8 +237,21 @@ function getcalendar() {
       }
       calendar.unselect();
     },
+
     eventClick: function (arg) {
+      if (isRequestInProgress) {
+        alert("Please wait, a request is already in progress.");
+        return;
+      }
+
       if (confirm("Are you sure you want to delete this event?")) {
+        isRequestInProgress = true;
+
+        var waitingDiv = $(
+          '<div id="waitingMessage">Please wait, processing...</div>'
+        );
+        $("#calendar").append(waitingDiv);
+
         arg.event.remove();
         var tt = JSON.stringify(escape(arg.event.title));
         var st = JSON.stringify(arg.event.start.toISOString());
@@ -262,15 +274,19 @@ function getcalendar() {
           "&event=" +
           delitm +
           "&action=rmvevnt";
+
         var request = jQuery.ajax({
           crossDomain: true,
           url: url,
           method: "GET",
           dataType: "jsonp",
+          complete: function () {
+            isRequestInProgress = false;
+            $("#waitingMessage").remove();
+          },
         });
       }
     },
-
     // editable: true,
     dayMaxEvents: true,
     events: eventsup,
@@ -284,6 +300,8 @@ function ctrlqevsv(e) {
 }
 
 function ctrlqevrmv(e) {
+  isRequestInProgress = false;
+  $("#waitingMessage").remove();
   liveond();
 }
 
