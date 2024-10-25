@@ -625,7 +625,7 @@ input[type="button"] {
     max-width: 100%;
   }
   #infocon {
-    margin-top: 0vh;
+    margin-top: 5vh;
     max-width: 350px;
     min-height: 50vh !important;
   }
@@ -639,10 +639,10 @@ input[type="button"] {
     height: 180px;
   }
   h2 {
-    font-size: 26px;
+    font-size: 24px !important;
   }
   h3 {
-    font-size: 22px;
+    font-size: 20px !important;
   }
 }
 @media screen and (max-height: 550px) {
