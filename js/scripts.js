@@ -182,7 +182,7 @@ function getcalendar() {
       right: "multiMonthYear,dayGridMonth,timeGridDay,listYear",
     },
     views: {
-      listYear: { buttonText: "all events" },
+      listYear: { buttonText: "🗒️" },
     },
     initialDate: flcaldate,
     navLinks: true,
