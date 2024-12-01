@@ -316,7 +316,7 @@ document.getElementById("shwdstrck").addEventListener("click", function () {
     );
     var currentWidthPercent = (currentWidth / parentWidth) * 100;
 
-    if (window.innerWidth > 500) {
+    if (window.innerWidth > 850) {
       var newWidthPercent = Math.max(currentWidthPercent - 30, 0);
       trckdescDiv.style.width = newWidthPercent + "%";
     }
