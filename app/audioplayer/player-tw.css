@@ -628,7 +628,7 @@ input[type="button"] {
   #infocon {
     margin-top: 5vh;
     max-width: 350px;
-    min-height: 50vh !important;
+    min-height: 40vh !important;
   }
   .sticon svg {
     top: 7.5px;
