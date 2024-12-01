@@ -616,13 +616,14 @@ input[type="button"] {
     background-position: 0% 50%;
   }
 }
-@media (max-width: 720px) and (max-height: 750px) {
+@media (max-width: 850px) and (max-height: 850px) {
   .track-info {
     font-size: 15px;
   }
   #chartcon {
     border: 0px;
     max-width: 100%;
+    padding-top: 2vh;
   }
   #infocon {
     margin-top: 5vh;
