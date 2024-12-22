@@ -383,25 +383,13 @@ setInterval(function () {
   console.clear();
 }, 100);
 
-// function createCookie(name, value, days) {
-//   let expires = "";
-//   if (days) {
-//     const date = new Date();
-//     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-//     expires = "; expires=" + date.toUTCString();
-//   }
-//   const cookieString =
-//     name + "=" + (value || "") + expires + "; path=/; domain=soubhikdas.in;";
-//   document.cookie = cookieString;
-// }
-
 function createRecord(name, value, days) {
   const record = { value: value || "", expires: null };
 
   if (days) {
     const date = new Date();
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    record.expires = date.toISOString(); // Save expiration as ISO string
+    record.expires = date.toISOString();
   }
 
   localStorage.setItem(name, JSON.stringify(record));
@@ -411,17 +399,14 @@ function createRecord(name, value, days) {
 function fetchRecord(name) {
   const record = JSON.parse(localStorage.getItem(name));
   if (record) {
-    // Check expiration
     if (record.expires && new Date(record.expires) < new Date()) {
       console.log(`Record expired: ${name}`);
-      localStorage.removeItem(name); // Remove expired record
+      localStorage.removeItem(name);
       return null;
     }
 
     return record.value;
   }
-
-  console.log(`Record not found: ${name}`);
   return null;
 }
 
@@ -440,7 +425,6 @@ async function validateForm(event) {
     );
 
     if (validEntry) {
-      // createCookie("_dsmuse", "valid", 7); // Create cookie '_dsmuse' valid for 7 days
       createRecord("_dsmuse", "valid", 1);
       alert("Validation successful!");
       window.location.reload();
