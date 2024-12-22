@@ -155,9 +155,10 @@ function GetCookie(cname) {
   return null;
 }
 var useru = GetCookie("_dfunc");
-var userds = GetCookie("_dsmuse");
+var userds = fetchRecord("_dsmuse");
 var crtaudlnk = document.getElementById("crtaudlnk");
-if (!useru && !userds) {
+console.log(userds);
+if (!useru && userds == null) {
   reqtokendsms();
   player.setAttribute("src", "#");
 }
@@ -174,7 +175,7 @@ function reqtokendsms() {
   var form = document.createElement("div");
   form.innerHTML = `
       <div class="form-container keyftch">
-        <span>🔔</span><form id="keyftch"><input id="glddid" placeholder="Geo ID: *****" required><input id="justpass" placeholder="Key: *****" required><input type="submit" value='Contune >>'><br>
+        <span>🔔</span><form id="keyftch"><input id="glddid" placeholder="Geo ID: *****" required><input id="justpass" placeholder="Key: *****" required><input type="submit" value='Continue >>'><br>
         <p>Send mail: D.SOUBHIK@OUTLOOK.COM</p>
       </div>
     `;
@@ -382,15 +383,48 @@ setInterval(function () {
   console.clear();
 }, 100);
 
-function createCookie(name, value, days) {
-  let expires = "";
+// function createCookie(name, value, days) {
+//   let expires = "";
+//   if (days) {
+//     const date = new Date();
+//     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+//     expires = "; expires=" + date.toUTCString();
+//   }
+//   const cookieString =
+//     name + "=" + (value || "") + expires + "; path=/; domain=soubhikdas.in;";
+//   document.cookie = cookieString;
+// }
+
+function createRecord(name, value, days) {
+  const record = { value: value || "", expires: null };
+
   if (days) {
     const date = new Date();
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    expires = "; expires=" + date.toUTCString();
+    record.expires = date.toISOString(); // Save expiration as ISO string
   }
-  document.cookie = name + "=" + (value || "") + expires;
+
+  localStorage.setItem(name, JSON.stringify(record));
+  console.log(`Record stored: ${name} =`, record);
 }
+
+function fetchRecord(name) {
+  const record = JSON.parse(localStorage.getItem(name));
+  if (record) {
+    // Check expiration
+    if (record.expires && new Date(record.expires) < new Date()) {
+      console.log(`Record expired: ${name}`);
+      localStorage.removeItem(name); // Remove expired record
+      return null;
+    }
+
+    return record.value;
+  }
+
+  console.log(`Record not found: ${name}`);
+  return null;
+}
+
 async function validateForm(event) {
   event.preventDefault();
 
@@ -406,7 +440,8 @@ async function validateForm(event) {
     );
 
     if (validEntry) {
-      createCookie("_dsmuse", "valid", 7); // Create cookie '_dsmuse' valid for 7 days
+      // createCookie("_dsmuse", "valid", 7); // Create cookie '_dsmuse' valid for 7 days
+      createRecord("_dsmuse", "valid", 1);
       alert("Validation successful!");
       window.location.reload();
     }
