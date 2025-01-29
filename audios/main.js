@@ -16,10 +16,8 @@ let track_index = 0;
 let isPlaying = false;
 let updateTimer;
 let isRepeating = false;
-// Create new audio element
 let curr_track = document.createElement("audio");
 let repeat_btn = document.querySelector(".repeat-track");
-// Define the tracks that have to be played
 let track_list = [
   {
     name: "Night of Light",
