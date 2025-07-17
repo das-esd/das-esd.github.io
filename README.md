@@ -2,7 +2,6 @@
 
 ## Contact
 
-📞 **+91 95932 26819**  
 📧 **d.soubhik@outlook.com**  
 🌐 **[soubhikdas.in](https://soubhikdas.in/)**
 
