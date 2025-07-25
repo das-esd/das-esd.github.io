@@ -20,6 +20,12 @@ let curr_track = document.createElement("audio");
 let repeat_btn = document.querySelector(".repeat-track");
 let track_list = [
   {
+    name: "কর্মের ফাঁদ",
+    artist: "Es D (Soubhik Das)",
+    image: "/audios/files/image/record_thumb.png",
+    path: "/audios/files/audio/record/কর্মের ফাঁদ.m4a",
+  },
+  {
     name: "ইতিহাসে প্রহসন",
     artist: "Es D (Soubhik Das)",
     image: "/audios/files/image/record_thumb.png",
