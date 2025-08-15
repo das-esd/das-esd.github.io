@@ -7460,13 +7460,11 @@
         var t = o(e),
           e = t.clone();
         return (
-          e
-            .removeAttr("data-role")
-            .css({
-              visibility: "hidden",
-              position: "absolute",
-              display: "block",
-            }),
+          e.removeAttr("data-role").css({
+            visibility: "hidden",
+            position: "absolute",
+            display: "block",
+          }),
           t.parent().append(e),
           (t = this.inViewport(e[0])),
           e.remove(),
@@ -7643,13 +7641,11 @@
       hiddenElementSize: function (e, t) {
         var n = o(e).clone(!0);
         return (
-          n
-            .removeAttr("data-role")
-            .css({
-              visibility: "hidden",
-              position: "absolute",
-              display: "block",
-            }),
+          n.removeAttr("data-role").css({
+            visibility: "hidden",
+            position: "absolute",
+            display: "block",
+          }),
           o("body").append(n),
           this.isValue(t) || (t = !1),
           (e = n.outerWidth(t)),
@@ -14587,13 +14583,11 @@
                         _(this).remove();
                       },
                     }),
-                    d
-                      .html(c)
-                      .animate({
-                        draw: { top: 0, opacity: 1, fontSize: [0, h] },
-                        dur: S,
-                        ease: y.ease,
-                      });
+                    d.html(c).animate({
+                      draw: { top: 0, opacity: 1, fontSize: [0, h] },
+                      dur: S,
+                      ease: y.ease,
+                    });
                   break;
                 default:
                   a.html(s);
@@ -33464,3 +33458,12 @@
         },
       });
   })(Metro, m4q); //# sourceMappingURL=metro.min.js.map
+document.addEventListener("DOMContentLoaded", function () {
+  const audioPlayer = document.getElementById("audioplayer");
+  if (audioPlayer) {
+    audioPlayer.addEventListener("ended", function () {
+      window.location.href =
+        "https://soubhikdas.in/app/audioplayer/?_SSmuse=true";
+    });
+  }
+});
