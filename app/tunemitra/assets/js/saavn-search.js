@@ -188,18 +188,18 @@ function PlayAudio(audio_url, song_id) {
     trimTextIfSmallScreen(album);
   document.getElementById("player-image").src = image;
 
-  var promise = audio.load();
-  if (promise) {
-    promise.catch(function (error) {
-      console.error(error);
-      // alert("Error loading audio. Please try again.");
-    });
-  }
-
-  audio.play().catch(function (error) {
-    console.error(error);
-    // alert("Error playing audio. Please try again.");
-  });
+  // Load and wait for audio to buffer
+  audio.load();
+  audio.addEventListener(
+    "canplaythrough",
+    function onReady() {
+      audio.removeEventListener("canplaythrough", onReady);
+      audio.play().catch(function (error) {
+        console.error("Error playing audio:", error);
+      });
+    },
+    { once: true }
+  );
 
   updatePlayPauseButton(true);
 
@@ -211,19 +211,19 @@ function PlayAudio(audio_url, song_id) {
 
   currentSongIndex = playQueue.indexOf(song_id);
 
-  audio.addEventListener("ended", function () {
+  audio.onended = function () {
     if (currentSongIndex + 1 < playQueue.length) {
       currentSongIndex++;
       const nextSongId = playQueue[currentSongIndex];
       const nextUrl = document.querySelector(
         `.video-container[data-song-id="${nextSongId}"]`
       ).dataset.downloadUrl;
-
+      console.log(nextSongId);
       PlayAudio(nextUrl, nextSongId);
     } else {
       updatePlayPauseButton(false);
     }
-  });
+  };
 }
 
 document.getElementById("loadmore").addEventListener("click", nextPage);
@@ -384,3 +384,31 @@ document
 document.addEventListener("contextmenu", function (e) {
   e.preventDefault();
 });
+
+(function () {
+  try {
+    // Check if inside an iframe
+    if (window.top !== window.self) {
+      // Get the referrer domain (iframe parent origin)
+      const ref = document.referrer;
+      if (ref) {
+        const parentDomain = new URL(ref).hostname;
+        const currentDomain = window.location.hostname;
+
+        // If not same-origin, clear the page
+        if (parentDomain !== currentDomain) {
+          document.documentElement.innerHTML = ""; // return blank
+          return; // stop further script execution
+        }
+      } else {
+        // No referrer → treat as untrusted iframe
+        document.documentElement.innerHTML = "";
+        return;
+      }
+    }
+  } catch (e) {
+    // If cross-origin access fails, also blank the page
+    document.documentElement.innerHTML = "";
+    return;
+  }
+})();

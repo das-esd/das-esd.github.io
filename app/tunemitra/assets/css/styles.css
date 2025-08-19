@@ -49,6 +49,10 @@ header {
     max-height: 160px;
     overflow-y: auto;
   }
+
+  .lofi-rad {
+    display: none;
+  }
 }
 
 .search-query-container {

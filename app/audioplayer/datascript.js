@@ -425,7 +425,7 @@ async function validateForm(event) {
     );
 
     if (validEntry) {
-      createRecord("_dsmuse", "valid", 1);
+      createRecord("_dsmuse", "valid", 7);
       alert("Validation successful!");
       window.location.reload();
     }
