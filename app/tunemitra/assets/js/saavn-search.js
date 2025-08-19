@@ -3,7 +3,22 @@ let sourceNode;
 let reverbNode;
 let slowedReverbEnabled = false;
 let lastSearch = "";
+if (window.top !== window.self) {
+  const allowedHost = "soubhikdas.in";
+  const refHost = document.referrer ? new URL(document.referrer).hostname : "";
 
+  if (refHost !== allowedHost) {
+    document.body.innerHTML = `
+        <div style="padding:20px; margin-top:35vh;font-family:sans-serif; text-align:center;">
+          <h2 style="color:#ddd; margin-bottom:10px;">Embedding not allowed 😔</h2>
+          <p style="font-size:14px; color:#444; line-height:1.5;">
+            This page uses <b>JioSaavn API</b> and is provided strictly for
+            <u>educational purposes only</u>. Unauthorized embedding or usage is not permitted.
+          </p>
+        </div>
+      `;
+  }
+}
 document
   .getElementById("search-form")
   .addEventListener("submit", function (event) {
@@ -384,31 +399,3 @@ document
 document.addEventListener("contextmenu", function (e) {
   e.preventDefault();
 });
-
-(function () {
-  try {
-    // Check if inside an iframe
-    if (window.top !== window.self) {
-      // Get the referrer domain (iframe parent origin)
-      const ref = document.referrer;
-      if (ref) {
-        const parentDomain = new URL(ref).hostname;
-        const currentDomain = window.location.hostname;
-
-        // If not same-origin, clear the page
-        if (parentDomain !== currentDomain) {
-          document.documentElement.innerHTML = ""; // return blank
-          return; // stop further script execution
-        }
-      } else {
-        // No referrer → treat as untrusted iframe
-        document.documentElement.innerHTML = "";
-        return;
-      }
-    }
-  } catch (e) {
-    // If cross-origin access fails, also blank the page
-    document.documentElement.innerHTML = "";
-    return;
-  }
-})();
