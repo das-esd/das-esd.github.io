@@ -1,5 +1,5 @@
 const CACHE_NAME = "app-page-cache-tunemitra";
-const urlsToCache = ["index.html", "logo.png"];
+const urlsToCache = ["logo.png"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(

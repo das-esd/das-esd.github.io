@@ -18,7 +18,7 @@ body {
 header {
   background: #4e4e4ea9 !important;
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .mobile-search {
     order: 1;
     width: 100%;
