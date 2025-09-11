@@ -421,7 +421,7 @@ html {
     #404040be
   );
   background-size: 500% 500%;
-  animation: gradient_b 60s ease infinite;
+  animation: gradient_c 60s ease infinite;
   border-left: 1px solid white;
   height: 87vh;
   margin: 0px auto;
@@ -604,6 +604,17 @@ input[type="button"] {
   font-size: 30px;
   object-fit: contain;
   rotate: 10deg;
+}
+@keyframes gradient_c {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 @keyframes gradient_b {
   0% {
