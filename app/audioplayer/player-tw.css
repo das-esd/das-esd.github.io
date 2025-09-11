@@ -381,17 +381,17 @@ html {
   z-index: 1000;
   color: #ffffff;
   background: linear-gradient(
-    -45deg,
+    75deg,
     #e6e6e6b4,
     #ad01adb0,
-    #0c0cc4a5,
+    #0c0cc48b,
+    #ffaa0da9,
     #05a005ab,
     #ffaa0da9,
-    #ff0000c1,
-    #404040be
+    #ff0000c1
   );
-  background-size: 500% 500%;
-  animation: gradient_b 60s ease infinite;
+  background-size: 600% 600%;
+  animation: gradient_b 30s ease infinite;
   border: 2px solid white;
 }
 #backfntrc {
@@ -607,10 +607,16 @@ input[type="button"] {
 }
 @keyframes gradient_b {
   0% {
-    background-position: 0% 50%;
+    background-position: 0% 250%;
+  }
+  25% {
+    background-position: 100% 350%;
   }
   50% {
-    background-position: 100% 50%;
+    background-position: 250% 150%;
+  }
+  75% {
+    background-position: 50% 150%;
   }
   100% {
     background-position: 0% 50%;
