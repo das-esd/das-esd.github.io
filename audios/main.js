@@ -20,6 +20,12 @@ let curr_track = document.createElement("audio");
 let repeat_btn = document.querySelector(".repeat-track");
 let track_list = [
   {
+    name: "Ganndda (Dirty)",
+    artist: "Es D (Soubhik Das)",
+    image: "/audios/files/image/record_thumb.png",
+    path: "/audios/files/audio/record/Ganndda.m4a",
+  },
+  {
     name: "Pendulum",
     artist: "Es D (Soubhik Das)",
     image: "/audios/files/image/record_thumb.png",
