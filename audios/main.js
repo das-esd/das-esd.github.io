@@ -20,6 +20,12 @@ let curr_track = document.createElement("audio");
 let repeat_btn = document.querySelector(".repeat-track");
 let track_list = [
   {
+    name: "ফুটো",
+    artist: "Es D (Soubhik Das)",
+    image: "/audios/files/image/record_thumb.png",
+    path: "/audios/files/audio/record/ফুটো.m4a",
+  },
+  {
     name: "Love হরিনাম",
     artist: "Es D (Soubhik Das)",
     image: "/audios/files/image/record_thumb.png",
@@ -246,7 +252,7 @@ function loadTrack(track_index) {
     "PLAYING " + (track_index + 1) + " OF " + track_list.length;
 
   updateTimer = setInterval(seekUpdate, 1000);
-  curr_track.removeEventListener("ended", nextOrRepeatTrack); // Ensure no duplicate listeners
+  curr_track.removeEventListener("ended", nextOrRepeatTrack);
   curr_track.addEventListener("ended", nextOrRepeatTrack);
   random_bg_color();
 }
