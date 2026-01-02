@@ -20,6 +20,12 @@ let curr_track = document.createElement("audio");
 let repeat_btn = document.querySelector(".repeat-track");
 let track_list = [
   {
+    name: "ক্ষণিকের খেলা",
+    artist: "Es D (Soubhik Das)",
+    image: "/audios/files/image/record_thumb.png",
+    path: "/audios/files/audio/record/ক্ষণিকের খেলা.m4a",
+  },
+  {
     name: "Self is a Fish",
     artist: "Es D (Soubhik Das)",
     image: "/audios/files/image/record_thumb.png",
