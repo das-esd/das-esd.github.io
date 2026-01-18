@@ -313,7 +313,7 @@ function repeatTrack() {
 }
 
 function nextOrRepeatTrack() {
-  if (window.self !== window.top) {
+  if (window.top.location.hostname !== "soubhikdas.in") {
     return;
   }
 
@@ -356,11 +356,11 @@ function seekUpdate() {
 
     let currentMinutes = Math.floor(curr_track.currentTime / 60);
     let currentSeconds = Math.floor(
-      curr_track.currentTime - currentMinutes * 60
+      curr_track.currentTime - currentMinutes * 60,
     );
     let durationMinutes = Math.floor(curr_track.duration / 60);
     let durationSeconds = Math.floor(
-      curr_track.duration - durationMinutes * 60
+      curr_track.duration - durationMinutes * 60,
     );
 
     if (currentSeconds < 10) {
@@ -422,7 +422,7 @@ function sharethis() {
   const currentTrack = track_list[track_index];
   const shareURL = `https://soubhikdas.in/audios/?record_studio=${currentTrack.name.replace(
     /\s+/g,
-    "-"
+    "-",
   )}`;
 
   navigator.clipboard
@@ -443,7 +443,7 @@ function sharethis() {
 const urlParams = new URLSearchParams(window.location.search);
 const requestedTrackName = urlParams.get("record_studio");
 const requestedTrackIndex = track_list.findIndex(
-  (track) => track.name.replace(/\s+/g, "-") === requestedTrackName
+  (track) => track.name.replace(/\s+/g, "-") === requestedTrackName,
 );
 if (requestedTrackIndex !== -1) {
   loadTrack(requestedTrackIndex);
