@@ -4,7 +4,7 @@ let reverbNode;
 let slowedReverbEnabled = false;
 let lastSearch = "";
 if (window.top !== window.self) {
-  const allowedHost = "127.0.0.1";
+  const allowedHost = "soubhikdas.in";
   const refHost = document.referrer ? new URL(document.referrer).hostname : "";
 
   if (refHost !== allowedHost) {
