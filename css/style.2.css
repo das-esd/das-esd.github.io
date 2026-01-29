@@ -94,7 +94,7 @@
 
 #conconas div {
   max-width: 800px;
-  background-color: #bebebe;
+  background-color: #d6d6d6;
 }
 
 #dasesd,
@@ -166,23 +166,23 @@
 }
 
 #about {
-  background-image: url("../assets/img/sectCover/sd.png");
+  background-image: url("../assets/img/sectCover/sd.webp");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   color: #dad8d8;
 }
 #dasesd {
-  background-image: url("../assets/img/sectCover/esd.jpg");
+  background-image: url("../assets/img/sectCover/dw.webp");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 #mwfbiz {
-  background-image: url("../assets/img/sectCover/bs.jpg");
+  background-image: url("../assets/img/sectCover/biz.webp");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 #dsonic {
-  background-image: url("../assets/img/sectCover/ds.jpg");
+  background-image: url("../assets/img/sectCover/dsonic.webp");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -222,7 +222,11 @@ h3 a:hover {
   height: 100%;
   max-width: 640px;
   margin: 0 auto;
-  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-family:
+    Arial,
+    Helvetica Neue,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   background-color: #c7c7c7;
   position: relative;
@@ -257,7 +261,7 @@ h3 a:hover {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 240px;
+  height: 300px;
   margin-bottom: 20px;
   display: block;
 }
@@ -352,6 +356,18 @@ h3 a:hover {
   margin-bottom: 10px;
   margin-top: 10px;
   color: #181818;
+}
+#introdc a {
+  text-decoration: underline;
+  color: #2e2e2e;
+}
+#introdc a:hover {
+  color: #2d2dcc;
+}
+#introdc .textcon {
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
 }
 .flwidth {
   width: 100%;

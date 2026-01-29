@@ -21,7 +21,7 @@
             scrollTop: target.offset().top,
           },
           1000,
-          "easeInOutExpo"
+          "easeInOutExpo",
         );
         return false;
       }
@@ -88,23 +88,6 @@
     flex-direction: column;
   `;
 
-  const closeBtn = document.createElement("button");
-  closeBtn.textContent = "✕";
-  closeBtn.style.cssText = `
-    background:rgb(42, 151, 247,0.46);
-    color: white;
-    padding: 4px 10px;
-    font-size: 12px;
-    border: none;
-    top:10px;
-    right:10px;
-    position:fixed;
-    align-self: flex-end;
-    cursor: pointer;
-    border-radius: 5px;
-    z-index: 10000;
-  `;
-
   const iframe = document.createElement("iframe");
   iframe.src = "../app/tunemitra/#instrumental";
   iframe.style.cssText = `
@@ -114,11 +97,6 @@
     border: none;
   `;
 
-  closeBtn.addEventListener("click", () => {
-    iframeDiv.style.display = "none";
-  });
-
-  iframeDiv.appendChild(closeBtn);
   iframeDiv.appendChild(iframe);
   document.body.appendChild(iframeDiv);
 
@@ -305,7 +283,7 @@ function getcalendar() {
         isRequestInProgress = true;
 
         var waitingDiv = $(
-          '<div id="waitingMessage">Please wait, processing...</div>'
+          '<div id="waitingMessage">Please wait, processing...</div>',
         );
         $("#calendar").append(waitingDiv);
 
@@ -372,7 +350,7 @@ document.addEventListener("DOMContentLoaded", () => {
         target.src = errorImage;
       }
     },
-    true
+    true,
   );
 });
 
@@ -566,7 +544,7 @@ async function validateForm(event) {
     const data = await response.json();
 
     const validEntry = data.keys.find(
-      (entry) => entry.GeoID === geoID && entry.Key === key
+      (entry) => entry.GeoID === geoID && entry.Key === key,
     );
 
     if (validEntry) {
@@ -599,3 +577,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.getElementById("inlivefrm").addEventListener("submit", validateForm);
+
+window.addEventListener("message", function (event) {
+  // if (event.origin !== "https://yourdomain.com") return;
+
+  if (event.data && event.data.type === "CLOSE_TUNEMITRA") {
+    const iframe = document.getElementById("iframeFullScreen");
+    if (iframe) {
+      iframe.style.display = "none";
+    }
+  }
+});

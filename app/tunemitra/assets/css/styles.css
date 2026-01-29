@@ -63,6 +63,8 @@ header {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
+  width: calc(100% - 40px);
+  position: relative;
 }
 
 .search-query-container::-webkit-scrollbar {
@@ -93,4 +95,40 @@ footer {
 }
 main {
   z-index: 0 !important;
+}
+
+#clstnmtr {
+  cursor: pointer;
+  background-color: #6d6d6d45;
+  padding: 3px 10px;
+  font-size: 14px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  border-radius: 7px;
+  align-items: center;
+  margin-left: 10px;
+  display: none;
+}
+
+#clstnmtr:hover {
+  background-color: #6d6d6da1;
+}
+
+.scroll-right-btn {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  background: #27272a;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 18px;
+}
+.scroll-right-btn:hover {
+  opacity: 0.7;
 }

@@ -4,7 +4,7 @@ let reverbNode;
 let slowedReverbEnabled = false;
 let lastSearch = "";
 if (window.top !== window.self) {
-  const allowedHost = "soubhikdas.in";
+  const allowedHost = "127.0.0.1";
   const refHost = document.referrer ? new URL(document.referrer).hostname : "";
 
   if (refHost !== allowedHost) {
@@ -17,8 +17,50 @@ if (window.top !== window.self) {
           </p>
         </div>
       `;
+  } else {
+    document.getElementById("clstnmtr").style.display = "flex";
   }
 }
+document.getElementById("clstnmtr").addEventListener("click", function () {
+  window.parent.postMessage({ type: "CLOSE_TUNEMITRA" }, "*");
+});
+document.querySelectorAll(".search-query-container").forEach((container) => {
+  container.addEventListener(
+    "wheel",
+    function (e) {
+      if (e.deltaY === 0) return;
+
+      e.preventDefault();
+      this.scrollLeft += e.deltaY;
+    },
+    { passive: false },
+  );
+});
+document.querySelectorAll(".search-query-container").forEach((container) => {
+  // Create wrapper
+  const wrapper = document.createElement("div");
+  wrapper.style.position = "relative";
+  wrapper.style.width = "100%";
+
+  // Insert wrapper
+  container.parentNode.insertBefore(wrapper, container);
+  wrapper.appendChild(container);
+
+  // Create button
+  const btn = document.createElement("button");
+  btn.innerHTML = "›";
+  btn.className = "scroll-right-btn";
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    container.scrollBy({
+      left: 100,
+      behavior: "smooth",
+    });
+  });
+
+  wrapper.appendChild(btn);
+});
 document
   .getElementById("search-form")
   .addEventListener("submit", function (event) {
@@ -213,7 +255,7 @@ function PlayAudio(audio_url, song_id) {
         console.error("Error playing audio:", error);
       });
     },
-    { once: true }
+    { once: true },
   );
 
   updatePlayPauseButton(true);
@@ -231,7 +273,7 @@ function PlayAudio(audio_url, song_id) {
       currentSongIndex++;
       const nextSongId = playQueue[currentSongIndex];
       const nextUrl = document.querySelector(
-        `.video-container[data-song-id="${nextSongId}"]`
+        `.video-container[data-song-id="${nextSongId}"]`,
       ).dataset.downloadUrl;
       console.log(nextSongId);
       PlayAudio(nextUrl, nextSongId);
@@ -327,7 +369,7 @@ function applySlowedReverbEffect() {
     const impulse = audioContext.createBuffer(
       2,
       impulseLength,
-      audioContext.sampleRate
+      audioContext.sampleRate,
     );
     const left = impulse.getChannelData(0);
     const right = impulse.getChannelData(1);
