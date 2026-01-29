@@ -10667,3 +10667,7 @@ html {
   border-width: 2px;
   margin: 0 !important;
 }
+
+#conascon .subheading {
+  color: #464646a2 !important;
+}
