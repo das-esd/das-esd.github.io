@@ -188,9 +188,9 @@ function ldprevd(e) {
 }
 
 ////// Audios///////
-function loadaudio() {
-  $("#adapp").load("audios/adapp.html");
-}
+// function loadaudio() {
+//   $("#adapp").load("audios/adapp.html");
+// }
 /////////////////Calender////////////////
 var isRequestInProgress = false;
 function getcalendar() {
@@ -363,7 +363,7 @@ var SetCookie = function (exdays, uid) {
   document.cookie =
     "_dfunc=" + uid + "; expires=" + expires + ";path=/;domain=soubhikdas.in";
   // setTimeout(loadaudio(),1000) ;
-  loadaudio();
+  // loadaudio();
 };
 function GetCookie(cname) {
   var name = cname + "=";
