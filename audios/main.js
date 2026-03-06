@@ -20,6 +20,12 @@ let curr_track = document.createElement("audio");
 let repeat_btn = document.querySelector(".repeat-track");
 let track_list = [
   {
+    name: "বল সবাই বোম বোম",
+    artist: "Es D (Soubhik Das)",
+    image: "/audios/files/image/record_thumb.png",
+    path: "/audios/files/audio/record/বল সবাই বোম বোম.m4a",
+  },
+  {
     name: "ক্ষণিকের খেলা",
     artist: "Es D (Soubhik Das)",
     image: "/audios/files/image/record_thumb.png",
