@@ -52,10 +52,10 @@ function inrd(e) {
         html
           .replace(
             /<img\s+([^>]*?)src=["']([^"']+)["']/gi,
-            '<img $1data-src="$2" class="lazy-img"'
+            '<img $1data-src="$2" class="lazy-img"',
           )
           // Optional: force links to open in new tab
-          .replace(/<a\s+([^>]*?)>/gi, '<a $1 target="_blank">')
+          .replace(/<a\s+([^>]*?)>/gi, '<a $1 target="_blank">'),
       );
 
     allRecords = sanitizedRecords;
@@ -212,9 +212,9 @@ function observeLazyImages() {
       });
     },
     {
-      rootMargin: "200px 0px", // preload a bit before visible
-      threshold: 0.1,
-    }
+      rootMargin: "300px 0px", // preload a bit before visible
+      threshold: 0,
+    },
   );
 
   document.querySelectorAll("img.lazy-img:not([src])").forEach((img) => {
@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.drawImage(imgBitmap, 0, 0);
 
         const pngBlob = await new Promise((resolve) =>
-          canvas.toBlob(resolve, "image/png")
+          canvas.toBlob(resolve, "image/png"),
         );
         if (!pngBlob) throw new Error("Failed to convert image to PNG");
 
