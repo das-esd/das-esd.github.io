@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (isResized && !isMobileDevice) {
         let currentDocumentWidth = document.documentElement.clientWidth;
         let widthDifference = Math.abs(
-          currentDocumentWidth - prevDocumentWidth
+          currentDocumentWidth - prevDocumentWidth,
         );
         if (
           (widthDifference >= 10 && widthDifference <= 60) ||
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log(
             "Document width changed by " +
               widthDifference +
-              " pixels and resize button is not clicked."
+              " pixels and resize button is not clicked.",
           );
           alert("Developer mode detected!");
         }
@@ -229,7 +229,7 @@ function copyToClipboard() {
     },
     function () {
       console.error("Failed to copy text to clipboard");
-    }
+    },
   );
 }
 
@@ -313,7 +313,7 @@ document.getElementById("shwdstrck").addEventListener("click", function () {
     tglelm.style.display = "block";
     var currentWidth = parseFloat(getComputedStyle(trckdescDiv).width);
     var parentWidth = parseFloat(
-      getComputedStyle(trckdescDiv.parentNode).width
+      getComputedStyle(trckdescDiv.parentNode).width,
     );
     var currentWidthPercent = (currentWidth / parentWidth) * 100;
 
@@ -361,7 +361,7 @@ function copyshrlnk() {
     },
     function () {
       console.error("Failed to copy text to clipboard");
-    }
+    },
   );
 }
 
@@ -375,7 +375,7 @@ document.addEventListener("DOMContentLoaded", () => {
         target.src = errorImage;
       }
     },
-    true
+    true,
   );
 });
 
@@ -421,7 +421,7 @@ async function validateForm(event) {
     const data = await response.json();
 
     const validEntry = data.keys.find(
-      (entry) => entry.GeoID === geoID && entry.Key === key
+      (entry) => entry.GeoID === geoID && entry.Key === key,
     );
 
     if (validEntry) {
