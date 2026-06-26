@@ -20,6 +20,12 @@ let curr_track = document.createElement("audio");
 let repeat_btn = document.querySelector(".repeat-track");
 let track_list = [
   {
+    name: "Love Sannata",
+    artist: "Es D / AB",
+    image: "/audios/files/image/d-ab.png",
+    path: "/audios/files/audio/record/Love Sannata.m4a",
+  },
+  {
     name: "Do We Do",
     artist: "Es D (Soubhik Das)",
     image: "/audios/files/image/record_thumb.png",
