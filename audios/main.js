@@ -20,6 +20,12 @@ let curr_track = document.createElement("audio");
 let repeat_btn = document.querySelector(".repeat-track");
 let track_list = [
   {
+    name: "My Waiting",
+    artist: "Es D (Soubhik Das)",
+    image: "/audios/files/image/record_thumb_d6.png",
+    path: "/audios/files/audio/record/My Waiting.m4a",
+  },
+  {
     name: "Love Sannata",
     artist: "Es D / AB",
     image: "/audios/files/image/d-ab.png",
