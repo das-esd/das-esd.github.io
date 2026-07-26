@@ -19,11 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
           (widthDifference >= 10 && widthDifference <= 60) ||
           widthDifference > 500
         ) {
-          console.log(
-            "Document width changed by " +
-              widthDifference +
-              " pixels and resize button is not clicked.",
-          );
+          // console.log(
+          //   "Document width changed by " +
+          //     widthDifference +
+          //     " pixels and resize button is not clicked.",
+          // );
           alert("Developer mode detected!");
         }
       }
@@ -49,6 +49,7 @@ if (dsmusic && dsmusic !== "") {
   var trackelm = dsmusic.split("::");
   var tracktitle = fromUrlFriendly(trackelm[0]);
   var tracksrc = window.atob(trackelm[1]);
+  audioUrlToBlob(tracksrc);
   var trackthumb = window.atob(trackelm[2]);
   var trackartist = window.atob(trackelm[3]);
   document.getElementById("chartcon").style.visibility = "visible";
@@ -58,8 +59,19 @@ if (dsmusic && dsmusic !== "") {
   document.getElementById("chartcon").style.visibility = "visible";
   document.getElementById("shwdstrck").style.pointerEvents = "auto";
 }
+async function audioUrlToBlob(audiourl) {
+  try {
+    const response = await fetch(audiourl);
+    const audioBlob = await response.blob();
+    const localurl = URL.createObjectURL(audioBlob);
+    const audio = new Audio(localurl);
+    player.setAttribute("src", localurl);
+    return localurl;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-player.setAttribute("src", tracksrc);
 title.innerText = tracktitle;
 artist.innerText = trackartist;
 thumb.src = trackthumb;
@@ -157,7 +169,6 @@ function GetCookie(cname) {
 var useru = GetCookie("_dfunc");
 var userds = fetchRecord("_dsmuse");
 var crtaudlnk = document.getElementById("crtaudlnk");
-console.log(userds);
 if (!useru && userds == null) {
   reqtokendsms();
   player.setAttribute("src", "#");
@@ -291,7 +302,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const trackDiv = createTrackDiv(track);
         tracksContainer.appendChild(trackDiv);
       });
-      console.log(data[1].src);
       if (ssflag) {
         var sstrack = data[1].src;
         window.open(sstrack, "_self");
@@ -393,14 +403,12 @@ function createRecord(name, value, days) {
   }
 
   localStorage.setItem(name, JSON.stringify(record));
-  console.log(`Record stored: ${name} =`, record);
 }
 
 function fetchRecord(name) {
   const record = JSON.parse(localStorage.getItem(name));
   if (record) {
     if (record.expires && new Date(record.expires) < new Date()) {
-      console.log(`Record expired: ${name}`);
       localStorage.removeItem(name);
       return null;
     }
